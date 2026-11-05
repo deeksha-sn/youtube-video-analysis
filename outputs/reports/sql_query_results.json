@@ -1,0 +1,479 @@
+{
+    "Q1_Top_10_Videos": [
+        {
+            "title": "YouTube Rewind: The Shape of 2017 | #YouTubeRewind",
+            "channel_title": "YouTube Spotlight",
+            "category_name": "Entertainment",
+            "views": 125432237,
+            "likes": 2912710,
+            "comment_count": 807558,
+            "engagement_rate_pct": 2.97
+        },
+        {
+            "title": "Marvel Studios' Avengers: Infinity War Official Trailer",
+            "channel_title": "Marvel Entertainment",
+            "category_name": "Entertainment",
+            "views": 89930713,
+            "likes": 2606663,
+            "comment_count": 347982,
+            "engagement_rate_pct": 3.29
+        },
+        {
+            "title": "VENOM - Official Trailer (HD)",
+            "channel_title": "Sony Pictures Entertainment",
+            "category_name": "Entertainment",
+            "views": 53822757,
+            "likes": 1250535,
+            "comment_count": 135405,
+            "engagement_rate_pct": 2.58
+        },
+        {
+            "title": "Marvel Studios' Avengers: Infinity War - Official Trailer",
+            "channel_title": "Marvel Entertainment",
+            "category_name": "Entertainment",
+            "views": 45064699,
+            "likes": 1494997,
+            "comment_count": 186005,
+            "engagement_rate_pct": 3.73
+        },
+        {
+            "title": "Sanju | Official Teaser | Ranbir Kapoor | Rajkumar Hirani",
+            "channel_title": "FoxStarHindi",
+            "category_name": "Entertainment",
+            "views": 44171797,
+            "likes": 780895,
+            "comment_count": 47829,
+            "engagement_rate_pct": 1.88
+        },
+        {
+            "title": "Taylor Swift - Delicate",
+            "channel_title": "TaylorSwiftVEVO",
+            "category_name": "Music",
+            "views": 43738208,
+            "likes": 1658756,
+            "comment_count": 148548,
+            "engagement_rate_pct": 4.13
+        },
+        {
+            "title": "Taylor Swift - End Game ft. Ed Sheeran, Future",
+            "channel_title": "TaylorSwiftVEVO",
+            "category_name": "Music",
+            "views": 42019590,
+            "likes": 1804377,
+            "comment_count": 146917,
+            "engagement_rate_pct": 4.64
+        },
+        {
+            "title": "Swag Se Swagat Song | Tiger Zinda Hai | Salman Khan | Katrina Kaif",
+            "channel_title": "YRF",
+            "category_name": "Music",
+            "views": 40953758,
+            "likes": 679940,
+            "comment_count": 65564,
+            "engagement_rate_pct": 1.82
+        },
+        {
+            "title": "Ed Sheeran - Perfect (Official Music Video)",
+            "channel_title": "Ed Sheeran",
+            "category_name": "Music",
+            "views": 39082222,
+            "likes": 1721384,
+            "comment_count": 90352,
+            "engagement_rate_pct": 4.64
+        },
+        {
+            "title": "Tiger Zinda Hai | Official Trailer | Salman Khan | Katrina Kaif",
+            "channel_title": "YRF",
+            "category_name": "Film & Animation",
+            "views": 38664360,
+            "likes": 865914,
+            "comment_count": 103907,
+            "engagement_rate_pct": 2.51
+        }
+    ],
+    "Q2_Category_Summary": [
+        {
+            "category_name": "Movies",
+            "total_videos": 2,
+            "aggregate_views": 7724380,
+            "avg_views": 3862190.0,
+            "avg_likes": 40013.0,
+            "avg_engagement_rate_pct": 0.92
+        },
+        {
+            "category_name": "Gaming",
+            "total_videos": 20,
+            "aggregate_views": 68728039,
+            "avg_views": 3436402.0,
+            "avg_likes": 99423.0,
+            "avg_engagement_rate_pct": 4.9
+        },
+        {
+            "category_name": "Pets & Animals",
+            "total_videos": 1,
+            "aggregate_views": 2490776,
+            "avg_views": 2490776.0,
+            "avg_likes": 186307.0,
+            "avg_engagement_rate_pct": 8.34
+        },
+        {
+            "category_name": "Music",
+            "total_videos": 1213,
+            "aggregate_views": 2448508274,
+            "avg_views": 2018556.0,
+            "avg_likes": 44594.0,
+            "avg_engagement_rate_pct": 2.36
+        },
+        {
+            "category_name": "Film & Animation",
+            "total_videos": 521,
+            "aggregate_views": 936896798,
+            "avg_views": 1798266.0,
+            "avg_likes": 27202.0,
+            "avg_engagement_rate_pct": 1.98
+        },
+        {
+            "category_name": "Sports",
+            "total_videos": 347,
+            "aggregate_views": 478958707,
+            "avg_views": 1380284.0,
+            "avg_likes": 27058.0,
+            "avg_engagement_rate_pct": 1.36
+        },
+        {
+            "category_name": "Howto & Style",
+            "total_videos": 478,
+            "aggregate_views": 395218494,
+            "avg_views": 826817.0,
+            "avg_likes": 9044.0,
+            "avg_engagement_rate_pct": 1.8
+        },
+        {
+            "category_name": "Comedy",
+            "total_videos": 1114,
+            "aggregate_views": 798799060,
+            "avg_views": 717055.0,
+            "avg_likes": 34833.0,
+            "avg_engagement_rate_pct": 4.83
+        },
+        {
+            "category_name": "Science & Technology",
+            "total_videos": 300,
+            "aggregate_views": 199386704,
+            "avg_views": 664622.0,
+            "avg_likes": 31889.0,
+            "avg_engagement_rate_pct": 10.09
+        },
+        {
+            "category_name": "Shows",
+            "total_videos": 121,
+            "aggregate_views": 78556290,
+            "avg_views": 649226.0,
+            "avg_likes": 3532.0,
+            "avg_engagement_rate_pct": 0.71
+        },
+        {
+            "category_name": "Entertainment",
+            "total_videos": 7547,
+            "aggregate_views": 4365865547,
+            "avg_views": 578490.0,
+            "avg_likes": 11166.0,
+            "avg_engagement_rate_pct": 1.36
+        },
+        {
+            "category_name": "People & Blogs",
+            "total_videos": 1232,
+            "aggregate_views": 554921583,
+            "avg_views": 450423.0,
+            "avg_likes": 7176.0,
+            "avg_engagement_rate_pct": 1.84
+        },
+        {
+            "category_name": "Autos & Vehicles",
+            "total_videos": 34,
+            "aggregate_views": 11331023,
+            "avg_views": 333265.0,
+            "avg_likes": 5564.0,
+            "avg_engagement_rate_pct": 2.16
+        },
+        {
+            "category_name": "News & Politics",
+            "total_videos": 2505,
+            "aggregate_views": 745070411,
+            "avg_views": 297433.0,
+            "avg_likes": 2301.0,
+            "avg_engagement_rate_pct": 0.98
+        },
+        {
+            "category_name": "Travel & Events",
+            "total_videos": 4,
+            "aggregate_views": 771631,
+            "avg_views": 192908.0,
+            "avg_likes": 3262.0,
+            "avg_engagement_rate_pct": 2.14
+        },
+        {
+            "category_name": "Education",
+            "total_videos": 798,
+            "aggregate_views": 74074920,
+            "avg_views": 92826.0,
+            "avg_likes": 4434.0,
+            "avg_engagement_rate_pct": 5.53
+        },
+        {
+            "category_name": "Other / Unknown",
+            "total_videos": 69,
+            "aggregate_views": 3929208,
+            "avg_views": 56945.0,
+            "avg_likes": 1850.0,
+            "avg_engagement_rate_pct": 3.46
+        }
+    ],
+    "Q3_Top_10_Channels": [
+        {
+            "channel_title": "T-Series",
+            "video_count": 62,
+            "total_views": 492076875,
+            "avg_views": 7936724.0,
+            "avg_engagement_rate_pct": 1.97
+        },
+        {
+            "channel_title": "5-Minute Crafts",
+            "video_count": 105,
+            "total_views": 207643050,
+            "avg_views": 1977553.0,
+            "avg_engagement_rate_pct": 1.16
+        },
+        {
+            "channel_title": "Marvel Entertainment",
+            "video_count": 17,
+            "total_views": 199741773,
+            "avg_views": 11749516.0,
+            "avg_engagement_rate_pct": 3.71
+        },
+        {
+            "channel_title": "Speed Records",
+            "video_count": 51,
+            "total_views": 177901300,
+            "avg_views": 3488261.0,
+            "avg_engagement_rate_pct": 2.78
+        },
+        {
+            "channel_title": "Zee Music Company",
+            "video_count": 42,
+            "total_views": 166446038,
+            "avg_views": 3963001.0,
+            "avg_engagement_rate_pct": 1.8
+        },
+        {
+            "channel_title": "YRF",
+            "video_count": 24,
+            "total_views": 161381864,
+            "avg_views": 6724244.0,
+            "avg_engagement_rate_pct": 1.79
+        },
+        {
+            "channel_title": "Dude Perfect",
+            "video_count": 12,
+            "total_views": 158854120,
+            "avg_views": 13237843.0,
+            "avg_engagement_rate_pct": 3.98
+        },
+        {
+            "channel_title": "Amit Bhadana",
+            "video_count": 18,
+            "total_views": 158724851,
+            "avg_views": 8818047.0,
+            "avg_engagement_rate_pct": 5.95
+        },
+        {
+            "channel_title": "PewDiePie",
+            "video_count": 37,
+            "total_views": 153189628,
+            "avg_views": 4140260.0,
+            "avg_engagement_rate_pct": 8.76
+        },
+        {
+            "channel_title": "Goldmines Telefilms",
+            "video_count": 25,
+            "total_views": 146326570,
+            "avg_views": 5853063.0,
+            "avg_engagement_rate_pct": 0.87
+        }
+    ],
+    "Q4_Monthly_Performance": [
+        {
+            "year": 2017,
+            "month": 5,
+            "month_name": "May",
+            "videos_published": 1,
+            "total_views": 58175,
+            "avg_views": 58175.0,
+            "avg_engagement_pct": 0.11
+        },
+        {
+            "year": 2017,
+            "month": 11,
+            "month_name": "November",
+            "videos_published": 1747,
+            "total_views": 999488217,
+            "avg_views": 572117.0,
+            "avg_engagement_pct": 1.87
+        },
+        {
+            "year": 2017,
+            "month": 12,
+            "month_name": "December",
+            "videos_published": 2791,
+            "total_views": 1728950119,
+            "avg_views": 619473.0,
+            "avg_engagement_pct": 1.99
+        },
+        {
+            "year": 2018,
+            "month": 1,
+            "month_name": "January",
+            "videos_published": 2644,
+            "total_views": 1478454452,
+            "avg_views": 559173.0,
+            "avg_engagement_pct": 2.01
+        },
+        {
+            "year": 2018,
+            "month": 2,
+            "month_name": "February",
+            "videos_published": 2258,
+            "total_views": 1540181861,
+            "avg_views": 682100.0,
+            "avg_engagement_pct": 1.98
+        },
+        {
+            "year": 2018,
+            "month": 3,
+            "month_name": "March",
+            "videos_published": 2340,
+            "total_views": 1712559679,
+            "avg_views": 731863.0,
+            "avg_engagement_pct": 1.95
+        },
+        {
+            "year": 2018,
+            "month": 4,
+            "month_name": "April",
+            "videos_published": 1684,
+            "total_views": 1376595678,
+            "avg_views": 817456.0,
+            "avg_engagement_pct": 2.13
+        },
+        {
+            "year": 2018,
+            "month": 5,
+            "month_name": "May",
+            "videos_published": 2018,
+            "total_views": 1577163430,
+            "avg_views": 781548.0,
+            "avg_engagement_pct": 2.21
+        },
+        {
+            "year": 2018,
+            "month": 6,
+            "month_name": "June",
+            "videos_published": 823,
+            "total_views": 757780234,
+            "avg_views": 920754.0,
+            "avg_engagement_pct": 2.82
+        }
+    ],
+    "Q5_High_Engagement_Outliers": [
+        {
+            "title": "OnePlus 6 Top Features and GIVEAWAY \ud83d\udd25- OnePlus 6 Avengers Edition Giveaway!!\ud83d\udd25",
+            "channel_title": "Technical Guruji",
+            "category_name": "Science & Technology",
+            "views": 1158291,
+            "video_engagement_rate": 65.03,
+            "cat_avg_engagement": 10.09,
+            "engagement_lift": 54.94
+        },
+        {
+            "title": "Samsung Galaxy S9 Top Features and Tips Tricks - Galaxy S9 Mega Giveaway \ud83d\udd25\ud83d\udd25\ud83d\udd25",
+            "channel_title": "Technical Guruji",
+            "category_name": "Science & Technology",
+            "views": 921731,
+            "video_engagement_rate": 59.43,
+            "cat_avg_engagement": 10.09,
+            "engagement_lift": 49.33
+        },
+        {
+            "title": "OnePlus 5T Star Wars Limited Edition Unboxing and First Look *GIVEAWAY*",
+            "channel_title": "Technical Guruji",
+            "category_name": "Science & Technology",
+            "views": 611786,
+            "video_engagement_rate": 53.32,
+            "cat_avg_engagement": 10.09,
+            "engagement_lift": 43.23
+        },
+        {
+            "title": "OnePlus 5T Unboxing and First Look - Giveaway Special \ud83d\udd25 \ud83d\udd25 \ud83d\udd25",
+            "channel_title": "Technical Guruji",
+            "category_name": "Science & Technology",
+            "views": 809247,
+            "video_engagement_rate": 37.88,
+            "cat_avg_engagement": 10.09,
+            "engagement_lift": 27.78
+        },
+        {
+            "title": "Xiaomi Redmi 5 Unboxing and First Look - New in the Budget?",
+            "channel_title": "Technical Guruji",
+            "category_name": "Science & Technology",
+            "views": 639525,
+            "video_engagement_rate": 32.84,
+            "cat_avg_engagement": 10.09,
+            "engagement_lift": 22.75
+        },
+        {
+            "title": "Xiaomi Redmi Note 5 Pro Unboxing and Giveaway \ud83d\udd25\ud83d\udd25\ud83d\udd25",
+            "channel_title": "Technical Guruji",
+            "category_name": "Science & Technology",
+            "views": 1431748,
+            "video_engagement_rate": 29.99,
+            "cat_avg_engagement": 10.09,
+            "engagement_lift": 19.89
+        },
+        {
+            "title": "Samsung Galaxy J6 Unboxing and Giveaway \ud83d\udd25\ud83d\udd25\ud83d\udd25",
+            "channel_title": "Technical Guruji",
+            "category_name": "Science & Technology",
+            "views": 2630109,
+            "video_engagement_rate": 29.68,
+            "cat_avg_engagement": 10.09,
+            "engagement_lift": 19.59
+        },
+        {
+            "title": "Another Bezel Less Beauty - Sharp Aquos S2 Unboxing and Giveaway",
+            "channel_title": "Technical Guruji",
+            "category_name": "Science & Technology",
+            "views": 565802,
+            "video_engagement_rate": 27.12,
+            "cat_avg_engagement": 10.09,
+            "engagement_lift": 17.03
+        },
+        {
+            "title": "World's Smallest Phone Unboxing and Giveaway \ud83d\udd25 Zanco tiny t1",
+            "channel_title": "Technical Guruji",
+            "category_name": "Science & Technology",
+            "views": 686128,
+            "video_engagement_rate": 26.39,
+            "cat_avg_engagement": 10.09,
+            "engagement_lift": 16.29
+        },
+        {
+            "title": "Gang Official Telugu Teaser | Suriya | Anirudh l Vignesh ShivN",
+            "channel_title": "Sony Music India",
+            "category_name": "Music",
+            "views": 1854103,
+            "video_engagement_rate": 18.63,
+            "cat_avg_engagement": 2.36,
+            "engagement_lift": 16.27
+        }
+    ]
+}

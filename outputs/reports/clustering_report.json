@@ -1,0 +1,68 @@
+{
+    "algorithm": "K-Means Clustering",
+    "optimal_k": 3,
+    "features_used": [
+        "log_views",
+        "log_likes",
+        "log_comments",
+        "engagement_rate"
+    ],
+    "scaler_used": "StandardScaler",
+    "inertias": {
+        "2": 39650.527629666365,
+        "3": 30252.573646516263,
+        "4": 23514.50348274967,
+        "5": 20323.58000555729,
+        "6": 17855.06220691015,
+        "7": 15791.985339133684
+    },
+    "silhouette_scores": {
+        "2": 0.3707346164382948,
+        "3": 0.38790760532556756,
+        "4": 0.34381516607240425,
+        "5": 0.3133417601766387,
+        "6": 0.32067773471366656,
+        "7": 0.31458552122395456
+    },
+    "cluster_profiles": {
+        "Cluster_0": {
+            "count": 6131,
+            "percentage": 37.6,
+            "views_mean": 1533726.5896264883,
+            "views_median": 668658.0,
+            "likes_mean": 30673.464524547384,
+            "likes_median": 6837.0,
+            "comments_mean": 2775.59142064916,
+            "engagement_rate_mean": 1.8188995245522854,
+            "engagement_rate_median": 1.2896660732553762,
+            "top_category": "Entertainment",
+            "semantic_label": "Mega Blockbusters / Mass Reach"
+        },
+        "Cluster_1": {
+            "count": 8248,
+            "percentage": 50.58,
+            "views_mean": 156619.0611057226,
+            "views_median": 114726.0,
+            "likes_mean": 778.341537342386,
+            "likes_median": 569.0,
+            "comments_mean": 88.69435014548982,
+            "engagement_rate_mean": 0.7497948366063575,
+            "engagement_rate_median": 0.4891604980124435,
+            "top_category": "Entertainment",
+            "semantic_label": "High Engagement / Enthusiast Viral"
+        },
+        "Cluster_2": {
+            "count": 1927,
+            "percentage": 11.82,
+            "views_mean": 247099.1738453555,
+            "views_median": 98406.0,
+            "likes_mean": 21429.99014011417,
+            "likes_median": 5812.0,
+            "comments_mean": 3335.2257394914373,
+            "engagement_rate_mean": 8.404453179637436,
+            "engagement_rate_median": 7.3328647008768355,
+            "top_category": "Education",
+            "semantic_label": "Moderate Reach / Low Engagement"
+        }
+    }
+}

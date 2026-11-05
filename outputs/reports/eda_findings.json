@@ -1,0 +1,25 @@
+{
+    "top_videos": {
+        "highest_view_video": "YouTube Rewind: The Shape of 2017 | #YouTubeRewind",
+        "highest_views": 125432237,
+        "highest_view_channel": "YouTube Spotlight"
+    },
+    "top_channels": {
+        "leading_channel": "T-Series",
+        "leading_channel_views": 492076875,
+        "leading_channel_videos": 62
+    },
+    "highest_avg_view_category": "Movies",
+    "highest_avg_views": 3862190.0,
+    "highest_engagement_category": "Science & Technology",
+    "highest_engagement_rate": 10.092909410005593,
+    "correlations": {
+        "views_vs_likes": 0.8424844293363235,
+        "views_vs_comments": 0.6640479630938863,
+        "likes_vs_comments": 0.7605254480678566,
+        "views_vs_engagement_rate": 0.025701274670264094
+    },
+    "peak_publishing_hour": 18,
+    "peak_hour_views": 930764.7297297297,
+    "best_weekday_for_engagement": "Friday"
+}

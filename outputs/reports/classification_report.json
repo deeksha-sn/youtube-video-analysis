@@ -1,0 +1,71 @@
+{
+    "algorithm": "Decision Tree Classifier",
+    "parameters": {
+        "criterion": "gini",
+        "max_depth": 4,
+        "min_samples_leaf": 25,
+        "random_state": 42
+    },
+    "evaluation_metrics": {
+        "accuracy": 0.7167381974248928,
+        "precision": 0.7578409919766593,
+        "recall": 0.6370324954015941,
+        "f1_score": 0.6922051965356429,
+        "confusion_matrix": {
+            "true_negative": 1299,
+            "false_positive": 332,
+            "false_negative": 592,
+            "true_positive": 1039
+        }
+    },
+    "feature_importances": {
+        "cat_Entertainment": 0.2962574263084826,
+        "cat_News & Politics": 0.20439139878121138,
+        "cat_People & Blogs": 0.14892484000055523,
+        "desc_length": 0.09790944290764114,
+        "publish_hour": 0.09787077644881587,
+        "title_length": 0.0810015720271934,
+        "cat_Shows": 0.0736445435261004,
+        "cat_Music": 0.0,
+        "cat_Sports": 0.0,
+        "cat_Science & Technology": 0.0,
+        "cat_Pets & Animals": 0.0,
+        "cat_Other / Unknown": 0.0,
+        "cat_Howto & Style": 0.0,
+        "cat_Movies": 0.0,
+        "publish_weekday": 0.0,
+        "cat_Gaming": 0.0,
+        "cat_Film & Animation": 0.0,
+        "cat_Education": 0.0,
+        "cat_Comedy": 0.0,
+        "tag_count": 0.0,
+        "cat_Travel & Events": 0.0
+    },
+    "classification_report": {
+        "0": {
+            "precision": 0.6869381279746166,
+            "recall": 0.7964438994481913,
+            "f1-score": 0.737649063032368,
+            "support": 1631.0
+        },
+        "1": {
+            "precision": 0.7578409919766593,
+            "recall": 0.6370324954015941,
+            "f1-score": 0.6922051965356429,
+            "support": 1631.0
+        },
+        "accuracy": 0.7167381974248928,
+        "macro avg": {
+            "precision": 0.722389559975638,
+            "recall": 0.7167381974248928,
+            "f1-score": 0.7149271297840054,
+            "support": 3262.0
+        },
+        "weighted avg": {
+            "precision": 0.7223895599756379,
+            "recall": 0.7167381974248928,
+            "f1-score": 0.7149271297840055,
+            "support": 3262.0
+        }
+    }
+}

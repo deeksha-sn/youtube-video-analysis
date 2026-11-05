@@ -1,0 +1,80 @@
+{
+    "raw_records": 37352,
+    "raw_features": 16,
+    "null_descriptions_imputed": 561,
+    "duplicate_snapshots_removed": 21045,
+    "invalid_or_zero_view_records_removed": 1,
+    "final_cleaned_records": 16306,
+    "final_features_count": 35,
+    "median_engagement_rate_threshold": 0.8264,
+    "high_engagement_count": 8153,
+    "low_engagement_count": 8153,
+    "outlier_iqr_analysis": {
+        "views": {
+            "q1": 88591.0,
+            "q3": 529482.5,
+            "iqr": 440891.5,
+            "lower_bound": -572746.25,
+            "upper_bound": 1190819.75,
+            "outlier_count": 1820,
+            "outlier_pct": 11.16
+        },
+        "likes": {
+            "q1": 561.0,
+            "q3": 6459.0,
+            "iqr": 5898.0,
+            "lower_bound": -8286.0,
+            "upper_bound": 15306.0,
+            "outlier_count": 2339,
+            "outlier_pct": 14.34
+        },
+        "comment_count": {
+            "q1": 47.0,
+            "q3": 700.0,
+            "iqr": 653.0,
+            "lower_bound": -932.5,
+            "upper_bound": 1679.5,
+            "outlier_count": 2071,
+            "outlier_pct": 12.7
+        },
+        "engagement_rate": {
+            "q1": 0.42022260817636437,
+            "q3": 2.379971073087609,
+            "iqr": 1.9597484649112449,
+            "lower_bound": -2.519400089190503,
+            "upper_bound": 5.3195937704544765,
+            "outlier_count": 1875,
+            "outlier_pct": 11.5
+        }
+    },
+    "summary_statistics": {
+        "views": {
+            "mean": 685099.4630810744,
+            "median": 205709.5,
+            "std": 2372651.5242298003,
+            "min": 4024.0,
+            "max": 125432237.0
+        },
+        "likes": {
+            "mean": 14459.362381945297,
+            "median": 1743.5,
+            "std": 66957.1888334103,
+            "min": 0.0,
+            "max": 2912710.0
+        },
+        "comment_count": {
+            "mean": 1482.6249233411015,
+            "median": 195.0,
+            "std": 10410.803500135416,
+            "min": 0.0,
+            "max": 807558.0
+        },
+        "engagement_rate": {
+            "mean": 2.056381827212108,
+            "median": 0.8264189868326745,
+            "std": 3.040070540628362,
+            "min": 0.0,
+            "max": 65.02839096565543
+        }
+    }
+}

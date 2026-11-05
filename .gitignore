@@ -1,0 +1,47 @@
+# =====================================================================
+# Git Ignore Configuration
+# Project: YouTube Video Analysis (DMDW AAT - Topic 42)
+# =====================================================================
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# Jupyter Notebook checkpoints
+.ipynb_checkpoints/
+*/.ipynb_checkpoints/*
+
+# Streamlit runtime cache
+.streamlit/
+
+# Operating System metadata
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Environment variables & secrets
+.env
+.env.*
+*.pem
+*.key
+
+# Temporary files & editor swap
+*.log
+*.tmp
+*.swp
+*~
+
+# Submission ZIP package (reproducible locally, redundant inside Git tree)
+YouTube_Video_Analysis_DMDW_AAT.zip

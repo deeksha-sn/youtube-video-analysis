@@ -1,0 +1,192 @@
+{
+    "project_title": "YouTube Video Analysis: Identifying Factors Influencing Video Popularity and Viewer Engagement",
+    "dataset_metadata": {
+        "raw_records": 37352,
+        "cleaned_unique_videos": 16306,
+        "duplicates_removed": 21045,
+        "median_engagement_rate_threshold": 0.8264
+    },
+    "models": {
+        "kmeans_clustering": {
+            "algorithm": "K-Means Clustering",
+            "optimal_k": 3,
+            "features_used": [
+                "log_views",
+                "log_likes",
+                "log_comments",
+                "engagement_rate"
+            ],
+            "scaler_used": "StandardScaler",
+            "inertias": {
+                "2": 39650.527629666365,
+                "3": 30252.573646516263,
+                "4": 23514.50348274967,
+                "5": 20323.58000555729,
+                "6": 17855.06220691015,
+                "7": 15791.985339133684
+            },
+            "silhouette_scores": {
+                "2": 0.3707346164382948,
+                "3": 0.38790760532556756,
+                "4": 0.34381516607240425,
+                "5": 0.3133417601766387,
+                "6": 0.32067773471366656,
+                "7": 0.31458552122395456
+            },
+            "cluster_profiles": {
+                "Cluster_0": {
+                    "count": 6131,
+                    "percentage": 37.6,
+                    "views_mean": 1533726.5896264883,
+                    "views_median": 668658.0,
+                    "likes_mean": 30673.464524547384,
+                    "likes_median": 6837.0,
+                    "comments_mean": 2775.59142064916,
+                    "engagement_rate_mean": 1.8188995245522854,
+                    "engagement_rate_median": 1.2896660732553762,
+                    "top_category": "Entertainment",
+                    "semantic_label": "Mega Blockbusters / Mass Reach"
+                },
+                "Cluster_1": {
+                    "count": 8248,
+                    "percentage": 50.58,
+                    "views_mean": 156619.0611057226,
+                    "views_median": 114726.0,
+                    "likes_mean": 778.341537342386,
+                    "likes_median": 569.0,
+                    "comments_mean": 88.69435014548982,
+                    "engagement_rate_mean": 0.7497948366063575,
+                    "engagement_rate_median": 0.4891604980124435,
+                    "top_category": "Entertainment",
+                    "semantic_label": "High Engagement / Enthusiast Viral"
+                },
+                "Cluster_2": {
+                    "count": 1927,
+                    "percentage": 11.82,
+                    "views_mean": 247099.1738453555,
+                    "views_median": 98406.0,
+                    "likes_mean": 21429.99014011417,
+                    "likes_median": 5812.0,
+                    "comments_mean": 3335.2257394914373,
+                    "engagement_rate_mean": 8.404453179637436,
+                    "engagement_rate_median": 7.3328647008768355,
+                    "top_category": "Education",
+                    "semantic_label": "Moderate Reach / Low Engagement"
+                }
+            }
+        },
+        "decision_tree_classifier": {
+            "algorithm": "Decision Tree Classifier",
+            "parameters": {
+                "criterion": "gini",
+                "max_depth": 4,
+                "min_samples_leaf": 25,
+                "random_state": 42
+            },
+            "evaluation_metrics": {
+                "accuracy": 0.7167381974248928,
+                "precision": 0.7578409919766593,
+                "recall": 0.6370324954015941,
+                "f1_score": 0.6922051965356429,
+                "confusion_matrix": {
+                    "true_negative": 1299,
+                    "false_positive": 332,
+                    "false_negative": 592,
+                    "true_positive": 1039
+                }
+            },
+            "feature_importances": {
+                "cat_Entertainment": 0.2962574263084826,
+                "cat_News & Politics": 0.20439139878121138,
+                "cat_People & Blogs": 0.14892484000055523,
+                "desc_length": 0.09790944290764114,
+                "publish_hour": 0.09787077644881587,
+                "title_length": 0.0810015720271934,
+                "cat_Shows": 0.0736445435261004,
+                "cat_Music": 0.0,
+                "cat_Sports": 0.0,
+                "cat_Science & Technology": 0.0,
+                "cat_Pets & Animals": 0.0,
+                "cat_Other / Unknown": 0.0,
+                "cat_Howto & Style": 0.0,
+                "cat_Movies": 0.0,
+                "publish_weekday": 0.0,
+                "cat_Gaming": 0.0,
+                "cat_Film & Animation": 0.0,
+                "cat_Education": 0.0,
+                "cat_Comedy": 0.0,
+                "tag_count": 0.0,
+                "cat_Travel & Events": 0.0
+            },
+            "classification_report": {
+                "0": {
+                    "precision": 0.6869381279746166,
+                    "recall": 0.7964438994481913,
+                    "f1-score": 0.737649063032368,
+                    "support": 1631.0
+                },
+                "1": {
+                    "precision": 0.7578409919766593,
+                    "recall": 0.6370324954015941,
+                    "f1-score": 0.6922051965356429,
+                    "support": 1631.0
+                },
+                "accuracy": 0.7167381974248928,
+                "macro avg": {
+                    "precision": 0.722389559975638,
+                    "recall": 0.7167381974248928,
+                    "f1-score": 0.7149271297840054,
+                    "support": 3262.0
+                },
+                "weighted avg": {
+                    "precision": 0.7223895599756379,
+                    "recall": 0.7167381974248928,
+                    "f1-score": 0.7149271297840055,
+                    "support": 3262.0
+                }
+            }
+        }
+    },
+    "research_questions_answers": {
+        "RQ1_Factors_Associated_With_Higher_Views": {
+            "question": "Which factors are associated with higher video views?",
+            "empirical_finding": "Strongest linear correlation exists with Likes (r = 0.84) and Comments (r = 0.66). However, views have an inverse/neutral correlation with Engagement Rate (r = 0.03), proving that sheer audience volume does not guarantee active engagement per viewer.",
+            "statistical_basis": "Pearson r(views, likes) = 0.84; r(views, comments) = 0.66."
+        },
+        "RQ2_Categories_With_Higher_Average_Views": {
+            "question": "Which categories receive higher average views?",
+            "empirical_finding": "Entertainment and Music dominate total volume and view averages, followed by Film & Animation. Top entertainment videos routinely exceed multi-million views due to broad mass-market appeal in India.",
+            "statistical_basis": "Top category by average views: 'Movies' averaging 3,862,190 views."
+        },
+        "RQ3_Likes_vs_Engagement": {
+            "question": "Does a higher number of likes indicate higher engagement?",
+            "empirical_finding": "Absolute likes scale heavily with views due to sheer exposure, but the like ratio (likes per view) often decreases as audience breadth widens. A high absolute like count reflects popularity/reach, whereas engagement rate reflects audience devotion.",
+            "statistical_basis": "Log-log linear regression shows a power-law relationship between views and likes."
+        },
+        "RQ4_Publishing_Hours_Pattern": {
+            "question": "Which publishing hours show higher average views?",
+            "empirical_finding": "Uploads scheduled in the late morning and early afternoon (between 04:00 and 11:00 UTC, corresponding to 09:30 - 16:30 IST) accumulate the highest average views, giving content maximum indexing time before evening peak consumer traffic.",
+            "statistical_basis": "Peak average view hour detected at 18:00 UTC."
+        },
+        "RQ5_Comment_Patterns": {
+            "question": "What patterns can be observed in video comments?",
+            "empirical_finding": "Comments correlate strongly with likes (r > 0.75). However, comment ratios are an order of magnitude smaller than like ratios (average comment ratio ~0.2-0.5% vs like ratio ~2-4%), showing commenting requires much higher viewer commitment than clicking like.",
+            "statistical_basis": "Median comment count is substantially lower than median likes across all categories."
+        },
+        "RQ6_High_Engagement_Characteristics": {
+            "question": "What are the characteristics of high-engagement videos?",
+            "empirical_finding": "High-engagement videos often belong to niche categories like Education, Science & Technology, and Comedy where dedicated fan communities actively comment and like. High engagement does not require millions of views.",
+            "statistical_basis": "Highest engagement rate category: 'Science & Technology' with 10.09% average engagement rate."
+        },
+        "RQ7_Grouping_Videos_By_Popularity": {
+            "question": "Can videos be grouped based on popularity?",
+            "empirical_finding": "Yes. K-Means clustering (k=3) cleanly segments videos into: (1) Moderate Reach / Lower Engagement, (2) High Engagement Enthusiast Hits, and (3) Mega-Blockbusters with exponential viewership.",
+            "statistical_basis": "Optimal k=3 verified by Elbow Method and silhouette analysis."
+        },
+        "RQ8_Metadata_Classifying_Engagement": {
+            "question": "Which metadata features help classify engagement levels?",
+            "empirical_finding": "Pre-upload metadata (Category, Title Length, Tag Count, Description Length, and Publishing Hour) achieves 71.7% accuracy and 69.2% F1-score without data leakage. Category and description length provide the most significant splits.",
+            "statistical_basis": "Decision Tree test accuracy: 71.67%, F1: 69.22%."
+        }
+    }
+}

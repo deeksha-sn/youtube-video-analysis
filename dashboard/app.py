@@ -1,6 +1,6 @@
 """
-Interactive Streamlit Analytics Dashboard
-=========================================
+Interactive Streamlit Analytics Dashboard - Redesigned Executive UI
+==================================================================
 Course: Data Mining & Data Warehousing (BCI24505D)
 Topic 42: YouTube Video Analysis
 Title: YouTube Video Popularity & Viewer Engagement Intelligence Dashboard
@@ -21,8 +21,8 @@ import streamlit as st
 
 # Configure page layout
 st.set_page_config(
-    page_title="YouTube Video Analytics | DMDW AAT",
-    page_icon="📊",
+    page_title="YouTube Analytics Dashboard | DMDW AAT",
+    page_icon="https://www.youtube.com/s/desktop/f71df42a/img/favicon_32x32.png",
     layout="wide",
     initial_sidebar_state="expanded"
 )
@@ -49,33 +49,270 @@ def load_data():
 df_master = load_data()
 
 # -----------------------------------------------------------------------------
-# SIDEBAR FILTERS
+# SVG LUCIDE ICONS (NO EMOJIS)
 # -----------------------------------------------------------------------------
-st.sidebar.image("https://upload.wikimedia.org/wikipedia/commons/e/e1/Logo_of_YouTube_%282015-2017%29.svg", width=180)
-st.sidebar.title("Navigation & Filters")
-st.sidebar.markdown("**Project:** DMDW AAT (BCI24505D)\n**Topic 42:** YouTube Video Mining")
+ICONS = {
+    "video": '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m22 8-6 4 6 4V8Z"/><rect width="14" height="12" x="2" y="6" rx="2"/></svg>',
+    "eye": '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>',
+    "thumbs_up": '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10v12"/><path d="M15 5.88 14 10h5.83a2 2 0 0 1 1.92 2.56l-2.33 8A2 2 0 0 1 17.5 22H4a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2h2.5L12 2.6a2 2 0 0 1 3 3.28Z"/></svg>',
+    "message": '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
+    "percent": '<svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" x2="5" y1="5" y2="19"/><circle cx="6.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="17.5" r="2.5"/></svg>',
+    "bar_chart": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" x2="12" y1="20" y2="10"/><line x1="18" x2="18" y1="20" y2="4"/><line x1="6" x2="6" y1="20" y2="16"/></svg>',
+    "users": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>',
+    "trophy": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0 0 12 0V2Z"/></svg>',
+    "clapperboard": '<svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#0f2b5c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.2 6 3 11l-.9-2.4c-.3-1.1.3-2.2 1.4-2.5l13.5-4c1.1-.3 2.2.3 2.5 1.4Z"/><path d="m6.2 5.3 3.1 4"/><path d="m12.1 3.6 3.1 4"/><path d="M2 11h20v9a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2Z"/></svg>',
+    "clock": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>',
+    "calendar": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
+    "layers": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>',
+    "target": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
+    "database": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>',
+    "search": '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>'
+}
 
-# Category Filter
-all_categories = sorted(df_master["category_name"].unique())
-selected_categories = st.sidebar.multiselect(
-    "Select Video Categories:",
-    options=all_categories,
-    default=all_categories
-)
+# -----------------------------------------------------------------------------
+# GLOBAL INJECTED CSS: PROFESSIONAL NAVY & SKY-BLUE THEME (MATCHING IMAGE 2)
+# -----------------------------------------------------------------------------
+CUSTOM_CSS = """
+<style>
+/* Import Inter Font */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
-# Search Channel Filter
-channel_search = st.sidebar.text_input("Search Specific Channel (optional):", "")
+html, body, [class*="css"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
 
-# Engagement Slider
-min_eng = float(df_master["engagement_rate"].min())
-max_eng = float(df_master["engagement_rate"].max())
-eng_range = st.sidebar.slider(
-    "Filter by Engagement Rate (%):",
-    min_value=0.0,
-    max_value=min(max_eng, 25.0),
-    value=(0.0, 25.0),
-    step=0.5
-)
+/* Light sky-blue background for main app */
+.stApp {
+    background: linear-gradient(180deg, #f0f4f9 0%, #f6f9fc 100%) !important;
+}
+
+/* Main Content Container Padding */
+.block-container {
+    padding-top: 1.6rem !important;
+    padding-bottom: 3rem !important;
+    padding-left: 2.2rem !important;
+    padding-right: 2.2rem !important;
+    max-width: 98% !important;
+}
+
+/* Top Header Bar */
+header[data-testid="stHeader"] {
+    background: transparent !important;
+}
+
+/* SIDEBAR: Dark Navy-Blue with Subtle Wave/Gradient */
+[data-testid="stSidebar"] {
+    background: linear-gradient(180deg, #091e42 0%, #0a2554 60%, #061733 100%) !important;
+    border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+}
+
+[data-testid="stSidebar"] * {
+    color: #ffffff;
+}
+
+[data-testid="stSidebar"] .stMarkdown p {
+    color: #cbd5e1;
+}
+
+/* Sidebar Inputs & Controls */
+[data-testid="stSidebar"] .stTextInput input {
+    background-color: #ffffff !important;
+    color: #0f172a !important;
+    border-radius: 8px !important;
+    border: 1px solid #cbd5e1 !important;
+    font-size: 13.5px !important;
+    padding: 8px 12px !important;
+}
+
+[data-testid="stSidebar"] .stTextInput input::placeholder {
+    color: #94a3b8 !important;
+}
+
+/* Multiselect Badges */
+[data-testid="stSidebar"] span[data-baseweb="tag"] {
+    background-color: #0284c7 !important;
+    color: #ffffff !important;
+    border-radius: 6px !important;
+    font-weight: 500 !important;
+    border: none !important;
+}
+
+/* Slider Track & Thumb */
+[data-testid="stSidebar"] [data-baseweb="slider"] {
+    color: #38bdf8 !important;
+}
+
+/* HORIZONTAL NAVIGATION BAR (Matching Image 2 Segmented Tabs) */
+div[data-testid="stTabs"] {
+    margin-top: 10px;
+    margin-bottom: 22px;
+}
+
+div[data-testid="stTabs"] div[role="tablist"] {
+    gap: 12px !important;
+    background: transparent !important;
+    border-bottom: none !important;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"] {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    padding: 9px 20px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 1px 3px rgba(15, 43, 92, 0.04) !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"]:hover {
+    border-color: #0284c7 !important;
+    color: #0284c7 !important;
+    transform: translateY(-1px);
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border: 1px solid #0284c7 !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.28) !important;
+}
+
+div[data-baseweb="tab-highlight"] {
+    display: none !important;
+}
+
+div[data-baseweb="tab-border"] {
+    display: none !important;
+}
+
+/* Clean Card Wrapper */
+.dashboard-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 20px 22px;
+    box-shadow: 0 4px 14px rgba(15, 43, 92, 0.04);
+    margin-bottom: 20px;
+}
+
+.card-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+    font-size: 15.5px;
+    font-weight: 700;
+    color: #0f2b5c;
+}
+
+/* Section Header with Blue Vertical Pill Indicator */
+.section-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 22px 0 16px 0;
+}
+
+.section-pill {
+    width: 4px;
+    height: 22px;
+    background: #0284c7;
+    border-radius: 2px;
+}
+
+.section-title {
+    margin: 0;
+    font-size: 19px;
+    font-weight: 700;
+    color: #0f2b5c;
+}
+
+/* Custom Primary Button */
+.stButton > button {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    font-weight: 600 !important;
+    padding: 10px 24px !important;
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.25) !important;
+    transition: all 0.2s ease !important;
+}
+
+.stButton > button:hover {
+    background: #0369a1 !important;
+    box-shadow: 0 6px 14px rgba(2, 132, 199, 0.35) !important;
+    transform: translateY(-1px);
+}
+</style>
+"""
+st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
+
+# -----------------------------------------------------------------------------
+# SIDEBAR NAVIGATION & FILTERS (MATCHING IMAGE 2)
+# -----------------------------------------------------------------------------
+with st.sidebar:
+    # YouTube Logo & Brand Title
+    st.markdown("""
+    <div style="display: flex; align-items: center; gap: 10px; margin-top: 5px; margin-bottom: 4px;">
+        <svg width="40" height="28" viewBox="0 0 68 48">
+            <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-.13,27.1-1.55c2.93-.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#FF0000"/>
+            <polygon points="45,24 27,14 27,34" fill="#FFFFFF"/>
+        </svg>
+        <span style="font-size: 24px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">YouTube</span>
+    </div>
+    <div style="font-size: 19px; font-weight: 700; color: #ffffff; margin-bottom: 12px; margin-top: -2px;">
+        YouTube Analytics
+    </div>
+    <hr style="border: 0; height: 1px; background: rgba(255, 255, 255, 0.15); margin: 0 0 16px 0;" />
+    """, unsafe_allow_html=True)
+    
+    st.markdown("""
+    <div style="font-size: 14px; font-weight: 700; color: #ffffff; margin-bottom: 2px;">
+        Navigation & Filters
+    </div>
+    <div style="font-size: 12px; color: #94a9c9; line-height: 1.4; margin-bottom: 18px;">
+        <b>Project:</b> DMDW AAT (BCI24505D)<br>
+        <b>Topic 42:</b> YouTube Video Mining
+    </div>
+    """, unsafe_allow_html=True)
+    
+    # 1. Category Multiselect Filter
+    all_categories = sorted(df_master["category_name"].unique())
+    selected_categories = st.multiselect(
+        "Select Video Categories:",
+        options=all_categories,
+        default=all_categories
+    )
+    
+    # 2. Search Specific Channel Filter
+    channel_search = st.text_input(
+        "Search Specific Channel (optional):",
+        placeholder="Search channel..."
+    )
+    
+    # 3. Engagement Slider Filter
+    min_eng = float(df_master["engagement_rate"].min())
+    max_eng = float(df_master["engagement_rate"].max())
+    eng_range = st.slider(
+        "Filter by Engagement Rate (%):",
+        min_value=0.0,
+        max_value=min(max_eng, 25.0),
+        value=(0.0, 25.0),
+        step=0.5
+    )
+    
+    # Bottom wave graphic spacer
+    st.markdown("""
+    <div style="margin-top: 50px; opacity: 0.25;">
+        <svg viewBox="0 0 200 60" preserveAspectRatio="none" style="width: 100%; height: 45px;">
+            <path d="M0,20 C50,45 100,5 150,30 C180,45 200,30 200,30 L200,60 L0,60 Z" fill="#38bdf8"/>
+        </svg>
+    </div>
+    """, unsafe_allow_html=True)
 
 # Apply Filters
 filtered_df = df_master[
@@ -87,151 +324,384 @@ if channel_search.strip():
     filtered_df = filtered_df[filtered_df["channel_title"].str.contains(channel_search, case=False, na=False)]
 
 # -----------------------------------------------------------------------------
-# MAIN HEADER & KEY METRIC TILES
+# MAIN DASHBOARD HEADER & WATERMARK (MATCHING IMAGE 2)
 # -----------------------------------------------------------------------------
-st.title("🎬 YouTube Video Popularity & Viewer Engagement Dashboard")
-st.markdown(
-    "An academic decision-support and data mining interface analyzing **trending factors, audience engagement, "
-    "K-Means video clustering, and Decision Tree engagement prediction** using real-world YouTube India data."
-)
+st.markdown(f"""
+<div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 22px;">
+    <div>
+        <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 6px;">
+            {ICONS['clapperboard']}
+            <h1 style="margin: 0; font-size: 26px; font-weight: 800; color: #0f2b5c; letter-spacing: -0.3px;">
+                YouTube Video Popularity & Viewer Engagement Dashboard
+            </h1>
+        </div>
+        <div style="font-size: 13.5px; color: #475569; max-width: 950px; line-height: 1.45;">
+            An academic decision-support and data mining interface analyzing trending factors, audience engagement, K-Means video clustering, and Decision Tree engagement prediction using real-world YouTube India data.
+        </div>
+    </div>
+    <div style="background: linear-gradient(135deg, #e0f2fe 0%, #bae6fd 100%); width: 72px; height: 50px; border-radius: 16px; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.15);">
+        <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+            <rect width="24" height="24" rx="6" fill="#0284c7"/>
+            <polygon points="9.5,7.5 16.5,12 9.5,16.5" fill="#ffffff"/>
+        </svg>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
+# -----------------------------------------------------------------------------
+# 5 ROUNDED PASTEL KPI METRIC CARDS (MATCHING IMAGE 2 EXACTLY)
+# -----------------------------------------------------------------------------
 col1, col2, col3, col4, col5 = st.columns(5)
-with col1:
-    st.metric("Total Videos", f"{len(filtered_df):,}")
-with col2:
-    total_views = filtered_df["views"].sum()
-    st.metric("Total Views", f"{total_views/1e6:.1f}M" if total_views < 1e9 else f"{total_views/1e9:.2f}B")
-with col3:
-    total_likes = filtered_df["likes"].sum()
-    st.metric("Total Likes", f"{total_likes/1e6:.1f}M")
-with col4:
-    total_comments = filtered_df["comment_count"].sum()
-    st.metric("Total Comments", f"{total_comments/1e6:.1f}M")
-with col5:
-    avg_eng = filtered_df["engagement_rate"].mean() if len(filtered_df) > 0 else 0
-    st.metric("Avg Engagement Rate", f"{avg_eng:.2f}%")
 
-st.markdown("---")
+# Metrics calculation
+total_vids = len(filtered_df)
+total_views = filtered_df["views"].sum()
+views_str = f"{total_views/1e9:.2f}B" if total_views >= 1e9 else f"{total_views/1e6:.1f}M"
+total_likes = filtered_df["likes"].sum()
+likes_str = f"{total_likes/1e6:.1f}M"
+total_comms = filtered_df["comment_count"].sum()
+comms_str = f"{total_comms/1e6:.1f}M"
+avg_eng = filtered_df["engagement_rate"].mean() if len(filtered_df) > 0 else 0
+eng_str = f"{avg_eng:.2f}%"
+
+def render_kpi_card(title, value, icon_svg, bg_color, border_color, icon_bg, icon_color):
+    return f"""
+    <div style="background: {bg_color}; border: 1px solid {border_color}; border-radius: 14px; padding: 14px 16px; box-shadow: 0 2px 8px rgba(15, 43, 92, 0.03); display: flex; align-items: center; gap: 14px;">
+        <div style="width: 44px; height: 44px; border-radius: 12px; background: {icon_bg}; color: {icon_color}; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+            {icon_svg}
+        </div>
+        <div style="overflow: hidden;">
+            <div style="font-size: 13px; font-weight: 500; color: #475569; margin-bottom: 2px; white-space: nowrap;">{title}</div>
+            <div style="font-size: 24px; font-weight: 800; color: #0f2b5c; line-height: 1.1;">{value}</div>
+        </div>
+    </div>
+    """
+
+with col1:
+    st.markdown(render_kpi_card("Total Videos", f"{total_vids:,}", ICONS['video'], "#ebf5ff", "#dbeafe", "#e0f2fe", "#0284c7"), unsafe_allow_html=True)
+with col2:
+    st.markdown(render_kpi_card("Total Views", views_str, ICONS['eye'], "#f5f3ff", "#ede9fe", "#ede9fe", "#7c3aed"), unsafe_allow_html=True)
+with col3:
+    st.markdown(render_kpi_card("Total Likes", likes_str, ICONS['thumbs_up'], "#f0fdf4", "#dcfce7", "#dcfce7", "#16a34a"), unsafe_allow_html=True)
+with col4:
+    st.markdown(render_kpi_card("Total Comments", comms_str, ICONS['message'], "#fffbeb", "#fef3c7", "#fef3c7", "#d97706"), unsafe_allow_html=True)
+with col5:
+    st.markdown(render_kpi_card("Avg Engagement Rate", eng_str, ICONS['percent'], "#ecfeff", "#cffafe", "#cffafe", "#0891b2"), unsafe_allow_html=True)
+
+st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# DASHBOARD TABS
+# HORIZONTAL NAVIGATION TABS (5 SECTIONS MATCHING IMAGE 2)
 # -----------------------------------------------------------------------------
 tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "📈 Category & Channel Analytics",
-    "🕒 Publishing Timing & Seasonality",
-    "🎯 K-Means Popularity Clusters",
-    "🤖 Predictive Engagement Engine",
-    "🏛️ Data Warehouse (Star Schema SQL)"
+    "Category & Channel Analytics",
+    "Publishing Timing & Seasonality",
+    "K-Means Popularity Clusters",
+    "Predictive Engagement Engine",
+    "Data Warehouse (Star Schema SQL)"
 ])
 
 # -----------------------------------------------------------------------------
-# TAB 1: Category & Channel Analytics
+# TAB 1: CATEGORY & CHANNEL ANALYTICS (EXACT MATCH TO IMAGE 2)
 # -----------------------------------------------------------------------------
 with tab1:
-    st.subheader("Category Performance vs. Viewer Engagement")
+    # Section Title with Vertical Blue Indicator
+    st.markdown("""
+    <div class="section-header">
+        <div class="section-pill"></div>
+        <div class="section-title">Category Performance vs. Viewer Engagement</div>
+    </div>
+    """, unsafe_allow_html=True)
+    
     col_t1a, col_t1b = st.columns(2)
     
     with col_t1a:
+        st.markdown(f"""
+        <div class="dashboard-card" style="padding-bottom: 4px;">
+            <div class="card-title">
+                <span style="color: #0284c7;">{ICONS['bar_chart']}</span>
+                <span>Average Views by Category</span>
+            </div>
+        """, unsafe_allow_html=True)
+        
         cat_summary = (
             filtered_df.groupby("category_name")["views"]
             .mean()
             .reset_index()
-            .sort_values(by="views", ascending=False)
+            .sort_values(by="views", ascending=True)
         )
+        
+        # Exact Navy-to-Sky-Blue Sequential Color Scale matching Image 2
         fig_cat_views = px.bar(
             cat_summary,
             x="views",
             y="category_name",
             orientation="h",
-            title="Average Views by Category",
             labels={"views": "Average Views", "category_name": "Category"},
             color="views",
-            color_continuous_scale="Blues"
+            color_continuous_scale=[
+                [0.0, "#bfdbfe"],
+                [0.25, "#60a5fa"],
+                [0.65, "#1d4ed8"],
+                [1.0, "#0b2553"]
+            ]
         )
-        fig_cat_views.update_layout(yaxis={"categoryorder": "total ascending"}, height=450)
+        fig_cat_views.update_layout(
+            margin=dict(l=10, r=20, t=10, b=30),
+            height=430,
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Inter, sans-serif", size=11, color="#334155"),
+            xaxis=dict(
+                gridcolor="#f1f5f9",
+                tickformat=".0s",
+                title=dict(text="Average Views", font=dict(size=11, color="#64748b"))
+            ),
+            yaxis=dict(
+                title=dict(text="Category", font=dict(size=11, color="#64748b")),
+                tickfont=dict(size=10.5)
+            ),
+            coloraxis_colorbar=dict(
+                title=dict(text="Average Views", font=dict(size=11, color="#64748b")),
+                tickformat=".0s",
+                thickness=12,
+                len=0.75
+            )
+        )
         st.plotly_chart(fig_cat_views, use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
     
     with col_t1b:
+        st.markdown(f"""
+        <div class="dashboard-card" style="padding-bottom: 4px;">
+            <div class="card-title">
+                <span style="color: #0284c7;">{ICONS['users']}</span>
+                <span>Average Engagement Rate (%) by Category</span>
+            </div>
+        """, unsafe_allow_html=True)
+        
         cat_eng_summary = (
             filtered_df.groupby("category_name")["engagement_rate"]
             .mean()
             .reset_index()
-            .sort_values(by="engagement_rate", ascending=False)
+            .sort_values(by="engagement_rate", ascending=True)
         )
+        
+        # Yellow-Green-Teal-Blue-Purple Gradient Scale matching Image 2
         fig_cat_eng = px.bar(
             cat_eng_summary,
             x="engagement_rate",
             y="category_name",
             orientation="h",
-            title="Average Engagement Rate (%) by Category",
             labels={"engagement_rate": "Engagement Rate (%)", "category_name": "Category"},
             color="engagement_rate",
-            color_continuous_scale="Viridis"
+            color_continuous_scale=[
+                [0.0, "#311042"],
+                [0.2, "#432874"],
+                [0.4, "#1d4ed8"],
+                [0.6, "#0d9488"],
+                [0.8, "#22c55e"],
+                [1.0, "#facc15"]
+            ]
         )
-        fig_cat_eng.update_layout(yaxis={"categoryorder": "total ascending"}, height=450)
+        fig_cat_eng.update_layout(
+            margin=dict(l=10, r=20, t=10, b=30),
+            height=430,
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Inter, sans-serif", size=11, color="#334155"),
+            xaxis=dict(
+                gridcolor="#f1f5f9",
+                title=dict(text="Engagement Rate (%)", font=dict(size=11, color="#64748b"))
+            ),
+            yaxis=dict(
+                title=dict(text="Category", font=dict(size=11, color="#64748b")),
+                tickfont=dict(size=10.5)
+            ),
+            coloraxis_colorbar=dict(
+                title=dict(text="Engagement Rate (%)", font=dict(size=11, color="#64748b")),
+                thickness=12,
+                len=0.75
+            )
+        )
         st.plotly_chart(fig_cat_eng, use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
     
-    st.subheader("Top Performing Channels")
+    # Section 2: Top Performing Channels
+    st.markdown(f"""
+    <div style="display: flex; align-items: center; gap: 10px; margin: 26px 0 16px 0;">
+        <div style="color: #0284c7; display: flex; align-items: center;">
+            {ICONS['trophy']}
+        </div>
+        <div class="section-title">Top Performing Channels</div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown(f"""
+    <div class="dashboard-card" style="padding-bottom: 4px;">
+        <div class="card-title">
+            <span style="color: #0284c7;">{ICONS['video']}</span>
+            <span>Top 15 Channels by Cumulative Views</span>
+        </div>
+    """, unsafe_allow_html=True)
+    
     top_channels = (
         filtered_df.groupby("channel_title")
         .agg(total_views=("views", "sum"), total_likes=("likes", "sum"), count=("views", "count"))
         .reset_index()
-        .sort_values(by="total_views", ascending=False)
-        .head(15)
+        .sort_values(by="total_views", ascending=True)
+        .tail(15)
     )
+    
+    # Coral-to-Dark-Crimson sequential scale matching Image 2
     fig_channels = px.bar(
         top_channels,
         x="total_views",
         y="channel_title",
         orientation="h",
-        title="Top 15 Channels by Cumulative Views",
         labels={"total_views": "Total Views", "channel_title": "Channel"},
         color="count",
-        color_continuous_scale="Reds"
+        color_continuous_scale=[
+            [0.0, "#fecaca"],
+            [0.35, "#f87171"],
+            [0.7, "#dc2626"],
+            [1.0, "#7f1d1d"]
+        ]
     )
-    fig_channels.update_layout(yaxis={"categoryorder": "total ascending"}, height=400)
+    fig_channels.update_layout(
+        margin=dict(l=10, r=20, t=10, b=30),
+        height=420,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
+        font=dict(family="Inter, sans-serif", size=11, color="#334155"),
+        xaxis=dict(
+            gridcolor="#f1f5f9",
+            tickformat=".0s",
+            title=dict(text="Total Views", font=dict(size=11, color="#64748b"))
+        ),
+        yaxis=dict(
+            title=dict(text="Channel", font=dict(size=11, color="#64748b")),
+            tickfont=dict(size=10.5)
+        ),
+        coloraxis_colorbar=dict(
+            title=dict(text="count", font=dict(size=11, color="#64748b")),
+            thickness=12,
+            len=0.75
+        )
+    )
     st.plotly_chart(fig_channels, use_container_width=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# TAB 2: Timing & Seasonality
+# TAB 2: PUBLISHING TIMING & SEASONALITY
 # -----------------------------------------------------------------------------
 with tab2:
-    st.subheader("Temporal Dynamics of Virality")
+    st.markdown("""
+    <div class="section-header">
+        <div class="section-pill"></div>
+        <div class="section-title">Temporal Dynamics of Virality & Upload Scheduling</div>
+    </div>
+    """, unsafe_allow_html=True)
+    
     col_t2a, col_t2b = st.columns(2)
     
     with col_t2a:
+        st.markdown(f"""
+        <div class="dashboard-card">
+            <div class="card-title">
+                <span style="color: #0284c7;">{ICONS['clock']}</span>
+                <span>Publishing Hour (UTC) vs. Average Views</span>
+            </div>
+        """, unsafe_allow_html=True)
+        
         hour_stats = filtered_df.groupby("publish_hour")["views"].mean().reset_index()
         fig_hour = px.line(
             hour_stats,
             x="publish_hour",
             y="views",
             markers=True,
-            title="Publishing Hour (UTC) vs. Average Views",
             labels={"publish_hour": "Hour of Day (UTC)", "views": "Average Views"}
         )
-        fig_hour.update_traces(line_color="#2980b9", line_width=3)
+        fig_hour.update_traces(
+            line=dict(color="#0284c7", width=3),
+            marker=dict(size=7, color="#0b2553")
+        )
+        fig_hour.update_layout(
+            margin=dict(l=10, r=20, t=10, b=30),
+            height=360,
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Inter, sans-serif", size=11, color="#334155"),
+            xaxis=dict(gridcolor="#f1f5f9", dtick=2),
+            yaxis=dict(gridcolor="#f1f5f9", tickformat=".0s")
+        )
         st.plotly_chart(fig_hour, use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
     
     with col_t2b:
+        st.markdown(f"""
+        <div class="dashboard-card">
+            <div class="card-title">
+                <span style="color: #0284c7;">{ICONS['calendar']}</span>
+                <span>Publishing Weekday vs. Average Engagement Rate</span>
+            </div>
+        """, unsafe_allow_html=True)
+        
         day_order = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
         day_stats = filtered_df.groupby("publish_day_name")["engagement_rate"].mean().reindex(day_order).reset_index()
+        
         fig_day = px.bar(
             day_stats,
             x="publish_day_name",
             y="engagement_rate",
-            title="Publishing Weekday vs. Average Engagement Rate",
             labels={"publish_day_name": "Day of Week", "engagement_rate": "Engagement Rate (%)"},
             color="engagement_rate",
-            color_continuous_scale="Teal"
+            color_continuous_scale=[
+                [0.0, "#cffafe"],
+                [0.5, "#0891b2"],
+                [1.0, "#0e7490"]
+            ]
+        )
+        fig_day.update_layout(
+            margin=dict(l=10, r=20, t=10, b=30),
+            height=360,
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Inter, sans-serif", size=11, color="#334155"),
+            xaxis=dict(gridcolor="#f1f5f9"),
+            yaxis=dict(gridcolor="#f1f5f9"),
+            coloraxis_showscale=False
         )
         st.plotly_chart(fig_day, use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# TAB 3: K-Means Popularity Clusters
+# TAB 3: K-MEANS POPULARITY CLUSTERS
 # -----------------------------------------------------------------------------
 with tab3:
-    st.subheader("Unsupervised Video Segmentation (K-Means Clustering)")
+    st.markdown("""
+    <div class="section-header">
+        <div class="section-pill"></div>
+        <div class="section-title">Unsupervised Video Segmentation (K-Means Clustering)</div>
+    </div>
+    """, unsafe_allow_html=True)
+    
     if "cluster_name" in filtered_df.columns:
+        st.markdown(f"""
+        <div class="dashboard-card">
+            <div class="card-title">
+                <span style="color: #0284c7;">{ICONS['layers']}</span>
+                <span>Interactive Cluster Map: Views vs. Engagement Rate</span>
+            </div>
+        """, unsafe_allow_html=True)
+        
+        # Color mapping matching executive blue/teal/purple palette
+        cluster_color_map = {
+            "Moderate Reach / Low Engagement": "#64748b",
+            "High Engagement / Enthusiast Viral": "#0d9488",
+            "Mega Blockbusters / Mass Reach": "#1d4ed8"
+        }
+        
         fig_cluster = px.scatter(
             filtered_df.sample(min(3000, len(filtered_df)), random_state=42),
             x="views",
@@ -239,13 +709,38 @@ with tab3:
             color="cluster_name",
             log_x=True,
             hover_data=["title", "channel_title", "category_name"],
-            title="Interactive Cluster Map: Views vs. Engagement Rate",
-            labels={"views": "Views (Log Scale)", "engagement_rate": "Engagement Rate (%)"},
-            color_discrete_sequence=px.colors.qualitative.Bold
+            labels={"views": "Views (Log Scale)", "engagement_rate": "Engagement Rate (%)", "cluster_name": "Cluster"},
+            color_discrete_map=cluster_color_map
+        )
+        fig_cluster.update_traces(marker=dict(size=6, opacity=0.65))
+        fig_cluster.update_layout(
+            margin=dict(l=10, r=20, t=10, b=30),
+            height=440,
+            paper_bgcolor="rgba(0,0,0,0)",
+            plot_bgcolor="rgba(0,0,0,0)",
+            font=dict(family="Inter, sans-serif", size=11, color="#334155"),
+            xaxis=dict(gridcolor="#f1f5f9"),
+            yaxis=dict(gridcolor="#f1f5f9"),
+            legend=dict(
+                orientation="h",
+                yanchor="bottom",
+                y=1.02,
+                xanchor="right",
+                x=1,
+                bgcolor="rgba(255,255,255,0.8)"
+            )
         )
         st.plotly_chart(fig_cluster, use_container_width=True)
+        st.markdown("</div>", unsafe_allow_html=True)
         
-        st.markdown("### Cluster Characteristic Summary Table")
+        st.markdown(f"""
+        <div class="dashboard-card">
+            <div class="card-title">
+                <span style="color: #0284c7;">{ICONS['bar_chart']}</span>
+                <span>Cluster Characteristic Summary Profile</span>
+            </div>
+        """, unsafe_allow_html=True)
+        
         cluster_grp = (
             filtered_df.groupby("cluster_name")
             .agg(
@@ -256,24 +751,40 @@ with tab3:
             )
             .reset_index()
         )
-        st.dataframe(cluster_grp.style.format({
-            "video_count": "{:,}",
-            "median_views": "{:,.0f}",
-            "avg_likes": "{:,.0f}",
-            "avg_engagement": "{:.2f}%"
-        }), use_container_width=True)
+        st.dataframe(
+            cluster_grp.style.format({
+                "video_count": "{:,}",
+                "median_views": "{:,.0f}",
+                "avg_likes": "{:,.0f}",
+                "avg_engagement": "{:.2f}%"
+            }),
+            use_container_width=True
+        )
+        st.markdown("</div>", unsafe_allow_html=True)
     else:
-        st.warning("Clustering column not found in dataset. Please run `main.py`.")
+        st.warning("Clustering column not found in dataset. Please run `main.py` first.")
 
 # -----------------------------------------------------------------------------
-# TAB 4: Predictive Engagement Engine (Decision Tree)
+# TAB 4: PREDICTIVE ENGAGEMENT ENGINE (DECISION TREE)
 # -----------------------------------------------------------------------------
 with tab4:
-    st.subheader("Interactive Engagement Classifier (Decision Tree)")
-    st.markdown(
-        "Predict whether a planned video is likely to achieve **High Engagement (Above Median)** "
-        "using strictly pre-publication metadata (Category, Timing, Text Lengths)."
-    )
+    st.markdown("""
+    <div class="section-header">
+        <div class="section-pill"></div>
+        <div class="section-title">Interactive Engagement Classifier (Decision Tree)</div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown(f"""
+    <div class="dashboard-card">
+        <div class="card-title">
+            <span style="color: #0284c7;">{ICONS['target']}</span>
+            <span>Predict Engagement Level from Pre-Publication Metadata</span>
+        </div>
+        <div style="font-size: 13px; color: #64748b; margin-top: -8px; margin-bottom: 20px;">
+            Simulate whether a planned video is likely to achieve <b>High Engagement (Above Median)</b> using strictly pre-upload metadata (Zero Data Leakage).
+        </div>
+    """, unsafe_allow_html=True)
     
     col_pred1, col_pred2 = st.columns(2)
     with col_pred1:
@@ -285,13 +796,13 @@ with tab4:
         in_tag_cnt = st.slider("Number of Tags:", 0, 50, 15)
         in_desc_len = st.slider("Description Character Length:", 0, 5000, 500)
     
-    if st.button("🔮 Predict Engagement Level"):
+    predict_clicked = st.button("Predict Engagement Level")
+    
+    if predict_clicked:
         if os.path.exists(MODEL_PATH):
             model = joblib.load(MODEL_PATH)
-            # Build feature vector matching training schema
             day_map = {"Monday": 0, "Tuesday": 1, "Wednesday": 2, "Thursday": 3, "Friday": 4, "Saturday": 5, "Sunday": 6}
             
-            # Feature columns
             row_dict = {
                 "publish_hour": in_hour,
                 "publish_weekday": day_map[in_day],
@@ -299,12 +810,9 @@ with tab4:
                 "tag_count": in_tag_cnt,
                 "desc_length": in_desc_len
             }
-            # Add categorical dummies
             for cat in all_categories:
-                col_name = f"cat_{cat}"
-                row_dict[col_name] = 1 if cat == in_cat else 0
+                row_dict[f"cat_{cat}"] = 1 if cat == in_cat else 0
             
-            # Align with model expected features
             model_features = model.feature_names_in_
             feature_vector = pd.DataFrame([[row_dict.get(c, 0) for c in model_features]], columns=model_features)
             
@@ -312,52 +820,76 @@ with tab4:
             prob = model.predict_proba(feature_vector)[0]
             
             if pred == 1:
-                st.success(f"🎉 **HIGH ENGAGEMENT PREDICTED!** (Confidence: {prob[1]*100:.1f}%)")
-                st.info("Videos with this profile historically elicit strong audience interaction (comments & likes per view).")
+                st.markdown(f"""
+                <div style="background: #ecfdf5; border: 1px solid #a7f3d0; border-radius: 12px; padding: 18px 20px; margin-top: 18px;">
+                    <div style="font-size: 17px; font-weight: 700; color: #065f46; margin-bottom: 4px;">
+                        High Engagement Predicted (Confidence: {prob[1]*100:.1f}%)
+                    </div>
+                    <div style="font-size: 13.5px; color: #047857;">
+                        Videos with this profile historically elicit strong audience interaction (high like and comment ratio relative to view count).
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
             else:
-                st.warning(f"⚠️ **STANDARD / LOW ENGAGEMENT PREDICTED** (Confidence: {prob[0]*100:.1f}%)")
-                st.info("Recommendation: Consider refining the title, increasing community hooks, or adjusting release timing.")
+                st.markdown(f"""
+                <div style="background: #fffbeb; border: 1px solid #fde68a; border-radius: 12px; padding: 18px 20px; margin-top: 18px;">
+                    <div style="font-size: 17px; font-weight: 700; color: #92400e; margin-bottom: 4px;">
+                        Standard / Low Engagement Predicted (Confidence: {prob[0]*100:.1f}%)
+                    </div>
+                    <div style="font-size: 13.5px; color: #b45309;">
+                        Recommendation: Consider refining the title length (40-65 chars), adding a more detailed description, or targeting high-engagement categories.
+                    </div>
+                </div>
+                """, unsafe_allow_html=True)
         else:
-            st.error("Decision tree model not found. Run `python src/classification.py` first.")
+            st.error("Decision Tree model file not found. Run `python src/classification.py` first.")
+            
+    st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# TAB 5: Data Warehouse & SQL Console
+# TAB 5: DATA WAREHOUSE & SQL CONSOLE
 # -----------------------------------------------------------------------------
 with tab5:
-    st.subheader("Data Warehousing Component: SQLite Star Schema")
-    st.markdown(
-        "Demonstrating analytical querying against the **Star Schema Data Warehouse** "
-        "consisting of `fact_video_performance` joined with `dim_category`, `dim_channel`, and `dim_date`."
-    )
+    st.markdown("""
+    <div class="section-header">
+        <div class="section-pill"></div>
+        <div class="section-title">Data Warehousing Component: SQLite Star Schema</div>
+    </div>
+    """, unsafe_allow_html=True)
+    
+    st.markdown(f"""
+    <div class="dashboard-card">
+        <div class="card-title">
+            <span style="color: #0284c7;">{ICONS['database']}</span>
+            <span>Analytical OLAP Query Explorer</span>
+        </div>
+        <div style="font-size: 13px; color: #64748b; margin-top: -8px; margin-bottom: 16px;">
+            Demonstrating analytical queries against the Star Schema Data Warehouse (<code>fact_video_performance</code> joined with dimension tables).
+        </div>
+    """, unsafe_allow_html=True)
     
     query_options = {
-        "Top 10 Most Viewed Videos": """
-            SELECT f.title, c.channel_title, cat.category_name, f.views, f.likes,
-                   ROUND(f.engagement_rate, 2) AS eng_rate_pct
-            FROM fact_video_performance f
-            JOIN dim_channel c ON f.channel_key = c.channel_key
-            JOIN dim_category cat ON f.category_key = cat.category_key
-            ORDER BY f.views DESC LIMIT 10;
-        """,
-        "Category Views & Engagement Aggregates": """
-            SELECT cat.category_name, COUNT(f.video_key) AS video_count,
-                   ROUND(AVG(f.views), 0) AS avg_views,
-                   ROUND(AVG(f.engagement_rate), 2) AS avg_eng_rate_pct
-            FROM fact_video_performance f
-            JOIN dim_category cat ON f.category_key = cat.category_key
-            GROUP BY cat.category_name ORDER BY avg_views DESC;
-        """,
-        "Weekday Virality Analysis": """
-            SELECT d.day_name, COUNT(f.video_key) AS total_uploads,
-                   ROUND(AVG(f.views), 0) AS avg_views,
-                   ROUND(AVG(f.engagement_rate), 2) AS avg_eng_pct
-            FROM fact_video_performance f
-            JOIN dim_date d ON f.date_key = d.date_key
-            GROUP BY d.day_of_week, d.day_name ORDER BY d.day_of_week;
-        """
+        "Top 10 Most Viewed Videos": """SELECT f.title, c.channel_title, cat.category_name, f.views, f.likes,
+       ROUND(f.engagement_rate, 2) AS eng_rate_pct
+FROM fact_video_performance f
+JOIN dim_channel c ON f.channel_key = c.channel_key
+JOIN dim_category cat ON f.category_key = cat.category_key
+ORDER BY f.views DESC LIMIT 10;""",
+        "Category Views & Engagement Aggregates": """SELECT cat.category_name, COUNT(f.video_key) AS video_count,
+       ROUND(AVG(f.views), 0) AS avg_views,
+       ROUND(AVG(f.engagement_rate), 2) AS avg_eng_rate_pct
+FROM fact_video_performance f
+JOIN dim_category cat ON f.category_key = cat.category_key
+GROUP BY cat.category_name ORDER BY avg_views DESC;""",
+        "Weekday Virality Analysis": """SELECT d.day_name, COUNT(f.video_key) AS total_uploads,
+       ROUND(AVG(f.views), 0) AS avg_views,
+       ROUND(AVG(f.engagement_rate), 2) AS avg_eng_pct
+FROM fact_video_performance f
+JOIN dim_date d ON f.date_key = d.date_key
+GROUP BY d.day_of_week, d.day_name ORDER BY d.day_of_week;"""
     }
     
-    selected_query_title = st.selectbox("Select Pre-configured OLAP Query:", list(query_options.keys()))
+    selected_query_title = st.selectbox("Select Analytical SQL Query:", list(query_options.keys()))
     sql_text = query_options[selected_query_title]
     st.code(sql_text, language="sql")
     
@@ -368,3 +900,5 @@ with tab5:
         st.dataframe(df_sql, use_container_width=True)
     else:
         st.warning("Database not found. Please run `python src/database.py` to populate warehouse.")
+        
+    st.markdown("</div>", unsafe_allow_html=True)

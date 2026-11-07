@@ -1,6 +1,6 @@
 """
-Interactive Streamlit Analytics Dashboard - Redesigned Executive UI
-==================================================================
+Interactive Streamlit Analytics Dashboard - Minimal Professional Sidebar
+========================================================================
 Course: Data Mining & Data Warehousing (BCI24505D)
 Topic 42: YouTube Video Analysis
 Title: YouTube Video Popularity & Viewer Engagement Intelligence Dashboard
@@ -65,16 +65,14 @@ ICONS = {
     "calendar": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"/><line x1="16" x2="16" y1="2" y2="6"/><line x1="8" x2="8" y1="2" y2="6"/><line x1="3" x2="21" y1="10" y2="10"/></svg>',
     "layers": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z"/><path d="m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65"/><path d="m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65"/></svg>',
     "target": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></svg>',
-    "database": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>',
-    "search": '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>'
+    "database": '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/><path d="M3 12c0 1.66 4 3 9 3s9-1.34 9-3"/></svg>'
 }
 
 # -----------------------------------------------------------------------------
-# GLOBAL INJECTED CSS: PROFESSIONAL NAVY & SKY-BLUE THEME (MATCHING IMAGE 2)
+# GLOBAL INJECTED CSS: PROFESSIONAL NAVY & SKY-BLUE THEME (MINIMAL SIDEBAR)
 # -----------------------------------------------------------------------------
 CUSTOM_CSS = """
 <style>
-/* Import Inter Font */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 
 html, body, [class*="css"] {
@@ -88,33 +86,127 @@ html, body, [class*="css"] {
 
 /* Main Content Container Padding */
 .block-container {
-    padding-top: 1.6rem !important;
-    padding-bottom: 3rem !important;
+    padding-top: 1.5rem !important;
+    padding-bottom: 2.8rem !important;
     padding-left: 2.2rem !important;
     padding-right: 2.2rem !important;
     max-width: 98% !important;
 }
 
-/* Top Header Bar */
 header[data-testid="stHeader"] {
     background: transparent !important;
 }
 
-/* SIDEBAR: Dark Navy-Blue with Subtle Wave/Gradient */
+/* SIDEBAR: Dark Navy-Blue with Subtle Gradient */
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #091e42 0%, #0a2554 60%, #061733 100%) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
+    padding-top: 1rem !important;
 }
 
 [data-testid="stSidebar"] * {
     color: #ffffff;
 }
 
-[data-testid="stSidebar"] .stMarkdown p {
-    color: #cbd5e1;
+/* Sidebar Navigation Radio Styling */
+[data-testid="stSidebar"] div[data-testid="stRadio"] > div {
+    gap: 4px !important;
 }
 
-/* Sidebar Inputs & Controls */
+[data-testid="stSidebar"] div[data-testid="stRadio"] label {
+    background: transparent !important;
+    border-radius: 8px !important;
+    padding: 9px 12px !important;
+    cursor: pointer !important;
+    display: flex !important;
+    align-items: center !important;
+    gap: 10px !important;
+    color: #cbd5e1 !important;
+    transition: all 0.2s ease !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    margin-bottom: 2px !important;
+    border: 1px solid transparent !important;
+}
+
+[data-testid="stSidebar"] div[data-testid="stRadio"] label:hover {
+    background: rgba(255, 255, 255, 0.08) !important;
+    color: #ffffff !important;
+}
+
+[data-testid="stSidebar"] div[data-testid="stRadio"] label:has(input:checked),
+[data-testid="stSidebar"] div[data-testid="stRadio"] label[data-checked="true"] {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3) !important;
+}
+
+/* Hide Radio Dot */
+[data-testid="stSidebar"] div[data-testid="stRadio"] div[data-testid="stRadioButton"] {
+    display: none !important;
+}
+[data-testid="stSidebar"] div[data-testid="stRadio"] input[type="radio"] {
+    display: none !important;
+}
+
+/* Lucide Vector Icons on Sidebar Navigation Labels via CSS */
+[data-testid="stSidebar"] div[data-testid="stRadio"] label:nth-of-type(1)::before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' x2='12' y1='20' y2='10'/%3E%3Cline x1='18' x2='18' y1='20' y2='4'/%3E%3Cline x1='6' x2='6' y1='20' y2='16'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+[data-testid="stSidebar"] div[data-testid="stRadio"] label:nth-of-type(2)::before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+[data-testid="stSidebar"] div[data-testid="stRadio"] label:nth-of-type(3)::before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z'/%3E%3Cpath d='m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65'/%3E%3Cpath d='m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+[data-testid="stSidebar"] div[data-testid="stRadio"] label:nth-of-type(4)::before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Ccircle cx='12' cy='12' r='6'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+[data-testid="stSidebar"] div[data-testid="stRadio"] label:nth-of-type(5)::before {
+    content: "";
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    flex-shrink: 0;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='12' cy='5' rx='9' ry='3'/%3E%3Cpath d='M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5'/%3E%3Cpath d='M3 12c0 1.66 4 3 9 3s9-1.34 9-3'/%3E%3C/svg%3E");
+    background-size: contain;
+    background-repeat: no-repeat;
+}
+
+/* Sidebar Filters Inputs */
 [data-testid="stSidebar"] .stTextInput input {
     background-color: #ffffff !important;
     color: #0f172a !important;
@@ -128,7 +220,6 @@ header[data-testid="stHeader"] {
     color: #94a3b8 !important;
 }
 
-/* Multiselect Badges */
 [data-testid="stSidebar"] span[data-baseweb="tag"] {
     background-color: #0284c7 !important;
     color: #ffffff !important;
@@ -137,58 +228,11 @@ header[data-testid="stHeader"] {
     border: none !important;
 }
 
-/* Slider Track & Thumb */
 [data-testid="stSidebar"] [data-baseweb="slider"] {
     color: #38bdf8 !important;
 }
 
-/* HORIZONTAL NAVIGATION BAR (Matching Image 2 Segmented Tabs) */
-div[data-testid="stTabs"] {
-    margin-top: 10px;
-    margin-bottom: 22px;
-}
-
-div[data-testid="stTabs"] div[role="tablist"] {
-    gap: 12px !important;
-    background: transparent !important;
-    border-bottom: none !important;
-}
-
-div[data-testid="stTabs"] button[data-baseweb="tab"] {
-    background: #ffffff !important;
-    color: #1e293b !important;
-    border: 1px solid #cbd5e1 !important;
-    border-radius: 10px !important;
-    padding: 9px 20px !important;
-    font-size: 13.5px !important;
-    font-weight: 500 !important;
-    box-shadow: 0 1px 3px rgba(15, 43, 92, 0.04) !important;
-    transition: all 0.2s ease !important;
-}
-
-div[data-testid="stTabs"] button[data-baseweb="tab"]:hover {
-    border-color: #0284c7 !important;
-    color: #0284c7 !important;
-    transform: translateY(-1px);
-}
-
-div[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] {
-    background: #0284c7 !important;
-    color: #ffffff !important;
-    border: 1px solid #0284c7 !important;
-    font-weight: 600 !important;
-    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.28) !important;
-}
-
-div[data-baseweb="tab-highlight"] {
-    display: none !important;
-}
-
-div[data-baseweb="tab-border"] {
-    display: none !important;
-}
-
-/* Clean Card Wrapper */
+/* Dashboard Card */
 .dashboard-card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -208,7 +252,6 @@ div[data-baseweb="tab-border"] {
     color: #0f2b5c;
 }
 
-/* Section Header with Blue Vertical Pill Indicator */
 .section-header {
     display: flex;
     align-items: center;
@@ -230,7 +273,6 @@ div[data-baseweb="tab-border"] {
     color: #0f2b5c;
 }
 
-/* Custom Primary Button */
 .stButton > button {
     background: #0284c7 !important;
     color: #ffffff !important;
@@ -252,35 +294,45 @@ div[data-baseweb="tab-border"] {
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# SIDEBAR NAVIGATION & FILTERS (MATCHING IMAGE 2)
+# MINIMAL PROFESSIONAL SIDEBAR
 # -----------------------------------------------------------------------------
 with st.sidebar:
-    # YouTube Logo & Brand Title
+    # 1. YouTube Logo and YouTube Analytics Branding
     st.markdown("""
-    <div style="display: flex; align-items: center; gap: 10px; margin-top: 5px; margin-bottom: 4px;">
-        <svg width="40" height="28" viewBox="0 0 68 48">
+    <div style="display: flex; align-items: center; gap: 10px; margin-top: 4px; margin-bottom: 2px;">
+        <svg width="38" height="26" viewBox="0 0 68 48">
             <path d="M66.52,7.74c-0.78-2.93-2.49-5.41-5.42-6.19C55.79,.13,34,0,34,0S12.21,.13,6.9,1.55 C3.97,2.33,2.27,4.81,1.48,7.74C0.06,13.05,0,24,0,24s0.06,10.95,1.48,16.26c0.78,2.93,2.49,5.41,5.42,6.19 C12.21,47.87,34,48,34,48s21.79-.13,27.1-1.55c2.93-.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24S67.94,13.05,66.52,7.74z" fill="#FF0000"/>
             <polygon points="45,24 27,14 27,34" fill="#FFFFFF"/>
         </svg>
-        <span style="font-size: 24px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">YouTube</span>
+        <span style="font-size: 22px; font-weight: 800; color: #ffffff; letter-spacing: -0.5px;">YouTube</span>
     </div>
-    <div style="font-size: 19px; font-weight: 700; color: #ffffff; margin-bottom: 12px; margin-top: -2px;">
+    <div style="font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 12px; margin-top: -2px;">
         YouTube Analytics
     </div>
-    <hr style="border: 0; height: 1px; background: rgba(255, 255, 255, 0.15); margin: 0 0 16px 0;" />
+    <hr style="border: 0; height: 1px; background: rgba(255, 255, 255, 0.12); margin: 0 0 14px 0;" />
     """, unsafe_allow_html=True)
+    
+    # 2. Navigation Links with Clean Lucide Icons
+    nav_options = [
+        "Category & Channel Analytics",
+        "Publishing Timing & Seasonality",
+        "K-Means Popularity Clusters",
+        "Predictive Engagement Engine",
+        "Data Warehouse (Star Schema SQL)"
+    ]
+    
+    selected_nav = st.radio(
+        "Navigation Links",
+        options=nav_options,
+        index=0,
+        label_visibility="collapsed"
+    )
     
     st.markdown("""
-    <div style="font-size: 14px; font-weight: 700; color: #ffffff; margin-bottom: 2px;">
-        Navigation & Filters
-    </div>
-    <div style="font-size: 12px; color: #94a9c9; line-height: 1.4; margin-bottom: 18px;">
-        <b>Project:</b> DMDW AAT (BCI24505D)<br>
-        <b>Topic 42:</b> YouTube Video Mining
-    </div>
+    <hr style="border: 0; height: 1px; background: rgba(255, 255, 255, 0.12); margin: 14px 0 16px 0;" />
     """, unsafe_allow_html=True)
     
-    # 1. Category Multiselect Filter
+    # 3. Video Category Filter
     all_categories = sorted(df_master["category_name"].unique())
     selected_categories = st.multiselect(
         "Select Video Categories:",
@@ -288,13 +340,13 @@ with st.sidebar:
         default=all_categories
     )
     
-    # 2. Search Specific Channel Filter
+    # 4. Channel Search
     channel_search = st.text_input(
         "Search Specific Channel (optional):",
         placeholder="Search channel..."
     )
     
-    # 3. Engagement Slider Filter
+    # 5. Engagement Rate Slider
     min_eng = float(df_master["engagement_rate"].min())
     max_eng = float(df_master["engagement_rate"].max())
     eng_range = st.slider(
@@ -304,15 +356,6 @@ with st.sidebar:
         value=(0.0, 25.0),
         step=0.5
     )
-    
-    # Bottom wave graphic spacer
-    st.markdown("""
-    <div style="margin-top: 50px; opacity: 0.25;">
-        <svg viewBox="0 0 200 60" preserveAspectRatio="none" style="width: 100%; height: 45px;">
-            <path d="M0,20 C50,45 100,5 150,30 C180,45 200,30 200,30 L200,60 L0,60 Z" fill="#38bdf8"/>
-        </svg>
-    </div>
-    """, unsafe_allow_html=True)
 
 # Apply Filters
 filtered_df = df_master[
@@ -353,7 +396,6 @@ st.markdown(f"""
 # -----------------------------------------------------------------------------
 col1, col2, col3, col4, col5 = st.columns(5)
 
-# Metrics calculation
 total_vids = len(filtered_df)
 total_views = filtered_df["views"].sum()
 views_str = f"{total_views/1e9:.2f}B" if total_views >= 1e9 else f"{total_views/1e6:.1f}M"
@@ -391,21 +433,29 @@ with col5:
 st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# HORIZONTAL NAVIGATION TABS (5 SECTIONS MATCHING IMAGE 2)
+# HORIZONTAL NAVIGATION BAR (MATCHING IMAGE 2)
 # -----------------------------------------------------------------------------
-tab1, tab2, tab3, tab4, tab5 = st.tabs([
-    "Category & Channel Analytics",
-    "Publishing Timing & Seasonality",
-    "K-Means Popularity Clusters",
-    "Predictive Engagement Engine",
-    "Data Warehouse (Star Schema SQL)"
-])
+nav_icon_keys = {
+    "Category & Channel Analytics": "bar_chart",
+    "Publishing Timing & Seasonality": "clock",
+    "K-Means Popularity Clusters": "layers",
+    "Predictive Engagement Engine": "target",
+    "Data Warehouse (Star Schema SQL)": "database"
+}
+
+pills_html = '<div style="display: flex; gap: 12px; margin-top: 10px; margin-bottom: 22px; flex-wrap: wrap;">'
+for item in nav_options:
+    is_active = (item == selected_nav)
+    style = "background: #0284c7; color: #ffffff; border: 1px solid #0284c7; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.28); font-weight: 600;" if is_active else "background: #ffffff; color: #1e293b; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(15, 43, 92, 0.04); font-weight: 500;"
+    icon_svg = ICONS[nav_icon_keys[item]]
+    pills_html += f'<div style="{style} border-radius: 10px; padding: 9px 18px; font-size: 13.5px; display: flex; align-items: center; gap: 8px;">{icon_svg}<span>{item}</span></div>'
+pills_html += '</div>'
+st.markdown(pills_html, unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# TAB 1: CATEGORY & CHANNEL ANALYTICS (EXACT MATCH TO IMAGE 2)
+# SECTION 1: CATEGORY & CHANNEL ANALYTICS
 # -----------------------------------------------------------------------------
-with tab1:
-    # Section Title with Vertical Blue Indicator
+if selected_nav == "Category & Channel Analytics":
     st.markdown("""
     <div class="section-header">
         <div class="section-pill"></div>
@@ -431,7 +481,6 @@ with tab1:
             .sort_values(by="views", ascending=True)
         )
         
-        # Exact Navy-to-Sky-Blue Sequential Color Scale matching Image 2
         fig_cat_views = px.bar(
             cat_summary,
             x="views",
@@ -487,7 +536,6 @@ with tab1:
             .sort_values(by="engagement_rate", ascending=True)
         )
         
-        # Yellow-Green-Teal-Blue-Purple Gradient Scale matching Image 2
         fig_cat_eng = px.bar(
             cat_eng_summary,
             x="engagement_rate",
@@ -553,7 +601,6 @@ with tab1:
         .tail(15)
     )
     
-    # Coral-to-Dark-Crimson sequential scale matching Image 2
     fig_channels = px.bar(
         top_channels,
         x="total_views",
@@ -593,9 +640,9 @@ with tab1:
     st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# TAB 2: PUBLISHING TIMING & SEASONALITY
+# SECTION 2: PUBLISHING TIMING & SEASONALITY
 # -----------------------------------------------------------------------------
-with tab2:
+elif selected_nav == "Publishing Timing & Seasonality":
     st.markdown("""
     <div class="section-header">
         <div class="section-pill"></div>
@@ -676,9 +723,9 @@ with tab2:
         st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# TAB 3: K-MEANS POPULARITY CLUSTERS
+# SECTION 3: K-MEANS POPULARITY CLUSTERS
 # -----------------------------------------------------------------------------
-with tab3:
+elif selected_nav == "K-Means Popularity Clusters":
     st.markdown("""
     <div class="section-header">
         <div class="section-pill"></div>
@@ -695,7 +742,6 @@ with tab3:
             </div>
         """, unsafe_allow_html=True)
         
-        # Color mapping matching executive blue/teal/purple palette
         cluster_color_map = {
             "Moderate Reach / Low Engagement": "#64748b",
             "High Engagement / Enthusiast Viral": "#0d9488",
@@ -765,9 +811,9 @@ with tab3:
         st.warning("Clustering column not found in dataset. Please run `main.py` first.")
 
 # -----------------------------------------------------------------------------
-# TAB 4: PREDICTIVE ENGAGEMENT ENGINE (DECISION TREE)
+# SECTION 4: PREDICTIVE ENGAGEMENT ENGINE (DECISION TREE)
 # -----------------------------------------------------------------------------
-with tab4:
+elif selected_nav == "Predictive Engagement Engine":
     st.markdown("""
     <div class="section-header">
         <div class="section-pill"></div>
@@ -847,9 +893,9 @@ with tab4:
     st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# TAB 5: DATA WAREHOUSE & SQL CONSOLE
+# SECTION 5: DATA WAREHOUSE & SQL CONSOLE
 # -----------------------------------------------------------------------------
-with tab5:
+elif selected_nav == "Data Warehouse (Star Schema SQL)":
     st.markdown("""
     <div class="section-header">
         <div class="section-pill"></div>

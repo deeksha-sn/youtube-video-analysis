@@ -1,6 +1,6 @@
 """
-Interactive Streamlit Analytics Dashboard - Minimal Professional Sidebar
-========================================================================
+Interactive Streamlit Analytics Dashboard - Minimal Sidebar & Horizontal Navigation
+===================================================================================
 Course: Data Mining & Data Warehousing (BCI24505D)
 Topic 42: YouTube Video Analysis
 Title: YouTube Video Popularity & Viewer Engagement Intelligence Dashboard
@@ -69,7 +69,7 @@ ICONS = {
 }
 
 # -----------------------------------------------------------------------------
-# GLOBAL INJECTED CSS: PROFESSIONAL NAVY & SKY-BLUE THEME (MINIMAL SIDEBAR)
+# GLOBAL INJECTED CSS: PROFESSIONAL NAVY & SKY-BLUE THEME
 # -----------------------------------------------------------------------------
 CUSTOM_CSS = """
 <style>
@@ -97,113 +97,15 @@ header[data-testid="stHeader"] {
     background: transparent !important;
 }
 
-/* SIDEBAR: Dark Navy-Blue with Subtle Gradient */
+/* SIDEBAR: Minimal Dark Navy-Blue with Subtle Gradient */
 [data-testid="stSidebar"] {
     background: linear-gradient(180deg, #091e42 0%, #0a2554 60%, #061733 100%) !important;
     border-right: 1px solid rgba(255, 255, 255, 0.08) !important;
-    padding-top: 1rem !important;
+    padding-top: 1.2rem !important;
 }
 
 [data-testid="stSidebar"] * {
     color: #ffffff;
-}
-
-/* Sidebar Navigation Radio Styling */
-[data-testid="stSidebar"] div[data-testid="stRadio"] > div {
-    gap: 4px !important;
-}
-
-[data-testid="stSidebar"] div[data-testid="stRadio"] label {
-    background: transparent !important;
-    border-radius: 8px !important;
-    padding: 9px 12px !important;
-    cursor: pointer !important;
-    display: flex !important;
-    align-items: center !important;
-    gap: 10px !important;
-    color: #cbd5e1 !important;
-    transition: all 0.2s ease !important;
-    font-size: 13.5px !important;
-    font-weight: 500 !important;
-    margin-bottom: 2px !important;
-    border: 1px solid transparent !important;
-}
-
-[data-testid="stSidebar"] div[data-testid="stRadio"] label:hover {
-    background: rgba(255, 255, 255, 0.08) !important;
-    color: #ffffff !important;
-}
-
-[data-testid="stSidebar"] div[data-testid="stRadio"] label:has(input:checked),
-[data-testid="stSidebar"] div[data-testid="stRadio"] label[data-checked="true"] {
-    background: #0284c7 !important;
-    color: #ffffff !important;
-    font-weight: 600 !important;
-    box-shadow: 0 4px 10px rgba(2, 132, 199, 0.3) !important;
-}
-
-/* Hide Radio Dot */
-[data-testid="stSidebar"] div[data-testid="stRadio"] div[data-testid="stRadioButton"] {
-    display: none !important;
-}
-[data-testid="stSidebar"] div[data-testid="stRadio"] input[type="radio"] {
-    display: none !important;
-}
-
-/* Lucide Vector Icons on Sidebar Navigation Labels via CSS */
-[data-testid="stSidebar"] div[data-testid="stRadio"] label:nth-of-type(1)::before {
-    content: "";
-    display: inline-block;
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cline x1='12' x2='12' y1='20' y2='10'/%3E%3Cline x1='18' x2='18' y1='20' y2='4'/%3E%3Cline x1='6' x2='6' y1='20' y2='16'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-[data-testid="stSidebar"] div[data-testid="stRadio"] label:nth-of-type(2)::before {
-    content: "";
-    display: inline-block;
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Cpolyline points='12 6 12 12 16 14'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-[data-testid="stSidebar"] div[data-testid="stRadio"] label:nth-of-type(3)::before {
-    content: "";
-    display: inline-block;
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m12.83 2.18a2 2 0 0 0-1.66 0L2.6 6.08a1 1 0 0 0 0 1.83l8.58 3.91a2 2 0 0 0 1.66 0l8.58-3.9a1 1 0 0 0 0-1.83Z'/%3E%3Cpath d='m22 17.65-9.17 4.16a2 2 0 0 1-1.66 0L2 17.65'/%3E%3Cpath d='m22 12.65-9.17 4.16a2 2 0 0 1-1.66 0L2 12.65'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-[data-testid="stSidebar"] div[data-testid="stRadio"] label:nth-of-type(4)::before {
-    content: "";
-    display: inline-block;
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='12' cy='12' r='10'/%3E%3Ccircle cx='12' cy='12' r='6'/%3E%3Ccircle cx='12' cy='12' r='2'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-
-[data-testid="stSidebar"] div[data-testid="stRadio"] label:nth-of-type(5)::before {
-    content: "";
-    display: inline-block;
-    width: 17px;
-    height: 17px;
-    flex-shrink: 0;
-    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%23ffffff' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cellipse cx='12' cy='5' rx='9' ry='3'/%3E%3Cpath d='M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5'/%3E%3Cpath d='M3 12c0 1.66 4 3 9 3s9-1.34 9-3'/%3E%3C/svg%3E");
-    background-size: contain;
-    background-repeat: no-repeat;
 }
 
 /* Sidebar Filters Inputs */
@@ -232,7 +134,53 @@ header[data-testid="stHeader"] {
     color: #38bdf8 !important;
 }
 
-/* Dashboard Card */
+/* HORIZONTAL NAVIGATION TABS (Top of Main Content matching Image 2) */
+div[data-testid="stTabs"] {
+    margin-top: 10px;
+    margin-bottom: 22px;
+}
+
+div[data-testid="stTabs"] div[role="tablist"] {
+    gap: 12px !important;
+    background: transparent !important;
+    border-bottom: none !important;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"] {
+    background: #ffffff !important;
+    color: #1e293b !important;
+    border: 1px solid #cbd5e1 !important;
+    border-radius: 10px !important;
+    padding: 9px 20px !important;
+    font-size: 13.5px !important;
+    font-weight: 500 !important;
+    box-shadow: 0 1px 3px rgba(15, 43, 92, 0.04) !important;
+    transition: all 0.2s ease !important;
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"]:hover {
+    border-color: #0284c7 !important;
+    color: #0284c7 !important;
+    transform: translateY(-1px);
+}
+
+div[data-testid="stTabs"] button[data-baseweb="tab"][aria-selected="true"] {
+    background: #0284c7 !important;
+    color: #ffffff !important;
+    border: 1px solid #0284c7 !important;
+    font-weight: 600 !important;
+    box-shadow: 0 4px 12px rgba(2, 132, 199, 0.28) !important;
+}
+
+div[data-baseweb="tab-highlight"] {
+    display: none !important;
+}
+
+div[data-baseweb="tab-border"] {
+    display: none !important;
+}
+
+/* Dashboard Card Wrapper */
 .dashboard-card {
     background: #ffffff;
     border: 1px solid #e2e8f0;
@@ -294,7 +242,7 @@ header[data-testid="stHeader"] {
 st.markdown(CUSTOM_CSS, unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# MINIMAL PROFESSIONAL SIDEBAR
+# MINIMAL LEFT SIDEBAR (CONTAINS ONLY BRANDING + 3 FILTERS)
 # -----------------------------------------------------------------------------
 with st.sidebar:
     # 1. YouTube Logo and YouTube Analytics Branding
@@ -309,30 +257,10 @@ with st.sidebar:
     <div style="font-size: 18px; font-weight: 700; color: #ffffff; margin-bottom: 12px; margin-top: -2px;">
         YouTube Analytics
     </div>
-    <hr style="border: 0; height: 1px; background: rgba(255, 255, 255, 0.12); margin: 0 0 14px 0;" />
+    <hr style="border: 0; height: 1px; background: rgba(255, 255, 255, 0.12); margin: 0 0 16px 0;" />
     """, unsafe_allow_html=True)
     
-    # 2. Navigation Links with Clean Lucide Icons
-    nav_options = [
-        "Category & Channel Analytics",
-        "Publishing Timing & Seasonality",
-        "K-Means Popularity Clusters",
-        "Predictive Engagement Engine",
-        "Data Warehouse (Star Schema SQL)"
-    ]
-    
-    selected_nav = st.radio(
-        "Navigation Links",
-        options=nav_options,
-        index=0,
-        label_visibility="collapsed"
-    )
-    
-    st.markdown("""
-    <hr style="border: 0; height: 1px; background: rgba(255, 255, 255, 0.12); margin: 14px 0 16px 0;" />
-    """, unsafe_allow_html=True)
-    
-    # 3. Video Category Filter
+    # 2. Video Category Filter
     all_categories = sorted(df_master["category_name"].unique())
     selected_categories = st.multiselect(
         "Select Video Categories:",
@@ -340,13 +268,13 @@ with st.sidebar:
         default=all_categories
     )
     
-    # 4. Channel Search
+    # 3. Channel Search
     channel_search = st.text_input(
         "Search Specific Channel (optional):",
         placeholder="Search channel..."
     )
     
-    # 5. Engagement Rate Slider
+    # 4. Engagement Rate Slider
     min_eng = float(df_master["engagement_rate"].min())
     max_eng = float(df_master["engagement_rate"].max())
     eng_range = st.slider(
@@ -433,29 +361,20 @@ with col5:
 st.markdown("<div style='height: 12px;'></div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# HORIZONTAL NAVIGATION BAR (MATCHING IMAGE 2)
+# HORIZONTAL NAVIGATION TABS (KEPT AT TOP OF MAIN AREA - SWITCHES PAGES)
 # -----------------------------------------------------------------------------
-nav_icon_keys = {
-    "Category & Channel Analytics": "bar_chart",
-    "Publishing Timing & Seasonality": "clock",
-    "K-Means Popularity Clusters": "layers",
-    "Predictive Engagement Engine": "target",
-    "Data Warehouse (Star Schema SQL)": "database"
-}
-
-pills_html = '<div style="display: flex; gap: 12px; margin-top: 10px; margin-bottom: 22px; flex-wrap: wrap;">'
-for item in nav_options:
-    is_active = (item == selected_nav)
-    style = "background: #0284c7; color: #ffffff; border: 1px solid #0284c7; box-shadow: 0 4px 12px rgba(2, 132, 199, 0.28); font-weight: 600;" if is_active else "background: #ffffff; color: #1e293b; border: 1px solid #cbd5e1; box-shadow: 0 1px 3px rgba(15, 43, 92, 0.04); font-weight: 500;"
-    icon_svg = ICONS[nav_icon_keys[item]]
-    pills_html += f'<div style="{style} border-radius: 10px; padding: 9px 18px; font-size: 13.5px; display: flex; align-items: center; gap: 8px;">{icon_svg}<span>{item}</span></div>'
-pills_html += '</div>'
-st.markdown(pills_html, unsafe_allow_html=True)
+tab1, tab2, tab3, tab4, tab5 = st.tabs([
+    "Category & Channel Analytics",
+    "Publishing Timing & Seasonality",
+    "K-Means Popularity Clusters",
+    "Predictive Engagement Engine",
+    "Data Warehouse (Star Schema SQL)"
+])
 
 # -----------------------------------------------------------------------------
-# SECTION 1: CATEGORY & CHANNEL ANALYTICS
+# TAB 1: CATEGORY & CHANNEL ANALYTICS (EXACT MATCH TO IMAGE 2)
 # -----------------------------------------------------------------------------
-if selected_nav == "Category & Channel Analytics":
+with tab1:
     st.markdown("""
     <div class="section-header">
         <div class="section-pill"></div>
@@ -481,6 +400,7 @@ if selected_nav == "Category & Channel Analytics":
             .sort_values(by="views", ascending=True)
         )
         
+        # Exact Navy-to-Sky-Blue Sequential Color Scale matching Image 2
         fig_cat_views = px.bar(
             cat_summary,
             x="views",
@@ -536,6 +456,7 @@ if selected_nav == "Category & Channel Analytics":
             .sort_values(by="engagement_rate", ascending=True)
         )
         
+        # Yellow-Green-Teal-Blue-Purple Gradient Scale matching Image 2
         fig_cat_eng = px.bar(
             cat_eng_summary,
             x="engagement_rate",
@@ -601,6 +522,7 @@ if selected_nav == "Category & Channel Analytics":
         .tail(15)
     )
     
+    # Coral-to-Dark-Crimson sequential scale matching Image 2
     fig_channels = px.bar(
         top_channels,
         x="total_views",
@@ -640,9 +562,9 @@ if selected_nav == "Category & Channel Analytics":
     st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# SECTION 2: PUBLISHING TIMING & SEASONALITY
+# TAB 2: PUBLISHING TIMING & SEASONALITY
 # -----------------------------------------------------------------------------
-elif selected_nav == "Publishing Timing & Seasonality":
+with tab2:
     st.markdown("""
     <div class="section-header">
         <div class="section-pill"></div>
@@ -723,9 +645,9 @@ elif selected_nav == "Publishing Timing & Seasonality":
         st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# SECTION 3: K-MEANS POPULARITY CLUSTERS
+# TAB 3: K-MEANS POPULARITY CLUSTERS
 # -----------------------------------------------------------------------------
-elif selected_nav == "K-Means Popularity Clusters":
+with tab3:
     st.markdown("""
     <div class="section-header">
         <div class="section-pill"></div>
@@ -811,9 +733,9 @@ elif selected_nav == "K-Means Popularity Clusters":
         st.warning("Clustering column not found in dataset. Please run `main.py` first.")
 
 # -----------------------------------------------------------------------------
-# SECTION 4: PREDICTIVE ENGAGEMENT ENGINE (DECISION TREE)
+# TAB 4: PREDICTIVE ENGAGEMENT ENGINE (DECISION TREE)
 # -----------------------------------------------------------------------------
-elif selected_nav == "Predictive Engagement Engine":
+with tab4:
     st.markdown("""
     <div class="section-header">
         <div class="section-pill"></div>
@@ -893,9 +815,9 @@ elif selected_nav == "Predictive Engagement Engine":
     st.markdown("</div>", unsafe_allow_html=True)
 
 # -----------------------------------------------------------------------------
-# SECTION 5: DATA WAREHOUSE & SQL CONSOLE
+# TAB 5: DATA WAREHOUSE & SQL CONSOLE
 # -----------------------------------------------------------------------------
-elif selected_nav == "Data Warehouse (Star Schema SQL)":
+with tab5:
     st.markdown("""
     <div class="section-header">
         <div class="section-pill"></div>
